@@ -1,0 +1,2458 @@
+<html>
+    <head>
+        <title> </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div>
+        </div>
+        <p style="text-align: right;">(51-100)pages</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ComposedOfPhysical, or the RelFieldNamesA field of the original object you
+specified in Step 1 on page 49 to appear in the more detail view. For this example, define layout parameters for the object <span style="background-color: black;color: white;">E</span> <br>
+LANMGR.10005A89A267 of the GMFHS_Managed_Real_Objects_Class.</p>
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Create an object of the Layout_Parameters_For_Object_Class to represent the
+layout parameters for the object when it is in a particular view. The following is part of the RODM load function statement (not in the
+DUIFSNET sample) that creates this object <span style="background-color: black;color: white;">D</span> , shown in Figure 15 on page
+            53:<br></p>
+<p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREATE INVOKER ::= 0000004;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBJCLASS ::= Layout_Parameters_For_Object_Class;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBJINST ::= Detail_Layout_LANMGR.10005A89A267;</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Link the Object field of the Layout_Parameters_For_Object_Class object you
+created in Step 2 to the DetailLayoutParmList field of the object represented.In this example, link the Object field of the In this example, link the Object field of the
+Detail_Layout_LANMGR.10005A89A267 object <span style="background-color: black;color: white;">D</span>  to the
+DetailLayoutParmList field of the object <span style="background-color: black;color: white;">E</span> LANMGR.10005A89A267. The
+following is part of the RODM load function statement that creates this link,
+shown as<span style="background-color: black;color: white;">3</span> in Figure 15 on page 53:<br></p>
+          <p style="font-size: 12px; margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Object ::= (OBJECTLINKLIST) (’GMFHS_Managed_Real_Objects_Class’.<br>
+’Detail_Layout_LANMGR.10005A89A267’.’DetailLayoutParmList’),</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Specify the view that these layout parameters apply to:<br>
+a. Link the SelectedResource field of the Layout_Parameters_For_Object_Class
+object to the DetailLayoutParmListForSelectedResource field on the object
+which is selected to generate this more detail view (the object selected in 1
+on page 49).<br>
+In this example, link the SelectedResource field of object <span style="background-color: black;color: white;">D</span> 
+Detail_Layout_LANMGR.10005A89A267 to the
+DetailLayoutParmListForSelectedResource field of object <span style="background-color: black;color: white;">A</span>  TRLAN. The
+following is part of the RODM load function statement that creates this link,
+shown as <span style="background-color: black;color: white;">4</span>  in Figure 15 on page 53:<br></p>
+<p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SelectedResource ::= (OBJECTLINKLIST)<br>
+(’GMFHS_Aggregate_Objects_Class’.<br>
+’TRLAN’.’DetailLayoutParmListForSelectedResource’),</p>
+        <p style="margin-left: 30px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. Specify which more detail view type these layout parameters apply to. You
+specify the view type by linking the ViewClass field of this object (<span style="background-color: black;color: white;">D</span> ) to
+the DetailLayoutParmList field of an object (<span style="background-color: black;color: white;">C</span> ) in the
+View_Information_Reference_Class that represents the view type:</p>
+        
+            <li style="margin-left: 30px; "> More_Detail_Logical_View_Reference</li>
+            <li style="margin-left: 30px; "> More_Detail_Physical_View_Reference</li>
+            <li style="margin-left: 30px; "> Configuration_Children_II_View_Reference</li>
+<li style="margin-left: 30px; ">Configuration_Children_III_View_Reference</li>
+        
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following is part of the RODM load function statement that creates the
+link specifying the more detail physical view, shown as <span style="background-color: black;color: white;">5</span> in Figure 15 on
+            page 53:</p>
+       <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViewClass ::= (OBJECTLINKLIST)<br>
+(’View_Information_Reference_Class’.<br>
+’More_Detail_Physical_View_Reference’.<br>
+’DetailLayoutParmList’),</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Specify the layout parameters for the object. Table 2 on page 47 lists the
+optional and required layout parameters for each layout algorithm.
+For this example, the radial layout for token ring algorithm is used. Table 2 on
+page 47 shows that the LayoutSequence field is the only optional parameter</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you can specify. Specify a value of 3 for the LayoutSequence field of this object
+(<span style="background-color: black;color: white;">D</span> ). The following is part of the RODM load function statement that sets the
+            value of the LayoutSequence field:</p>
+<p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LayoutSequence ::= (INTEGER) 3</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. If you want to use this same Layout_Parameters_For_Object_Class object for
+additional objects or views, create additional links. All of the link fields accept
+multiple values.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For example, use this same object to define the layout parameters for object
+LANMGR.10005A89A267 when it is in the more detail physical view generated
+when an object of the GMFHS_Aggregate_Objects_Class named OTHER_AGG
+is selected (OTHER_AGG is not part of the sample network). Create a link from
+the SelectedResource field of object Detail_Layout_LANMGR.10005A89A267 to
+the DetailLayoutParmListForSelectedResource field of object OTHER_AGG. The
+following is a RODM load function primitive statement that creates this link:</p>
+        <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OP ’Layout_Parameters_For_Object_Class’.<br>
+&emsp;&emsp;’Detail_Layout_LANMGR.10005A89A267’.’SelectedResource’<br>
+IS_LINKED_TO ’GMFHS_Aggregate_Objects_Class’.’TRLAN’.<br>
+&emsp;&emsp;’DetailLayoutParmListForSelectedResource’;</p>
+        
+        <br>  <br> <br> <br><br>
+        <center>
+        <img src="Screenshot%20(3).png" style="align-items: center;">
+            </center>
+        <p style="margin-left: 30px; font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 15. Defining Layout Parameters for Objects in More Detail Views</p>
+        
+        <h3 style="margin-left: 40px;" >Putting It All Together</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After you have defined the objects that represent your configurations and
+networks, load them into RODM using the RODM load function. Chapter 3,
+“Loading the GMFHS Data Model,” on page 55 contains directions for doing this.</p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You need to load the class definition before you load the definitions of the object
+of that class. By the same token, you need to define objects that are to be linked
+        before you can actually link them. Use the load function statements in sample
+member DUIFSNET as an example of the order to follow. The objects and links in
+the sample network are arranged for loading in the following order:</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            1. SNA_Domain_Class objects<br>
+2. GMFHS_Shadow_Objects_Class objects<br>
+3. NMG_Class objects<br>
+4. Non_SNA_Domain_Class objects<br>
+5. GMFHS_Managed_Real_Objects_Class objects<br>
+6. GMFHS_Aggregate_Objects_Class objects<br>
+            7. Linkages among objects<br>
+        
+            <li style="margin-left: 50px;">Logical links</li>
+             <li style="margin-left: 50px;">Physical links</li>
+             <li style="margin-left: 50px;"> Parent/Child links</li>
+        </p>
+                    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                        8. Exception_View_Class objects<br>
+9. Network_View_Class objects<br>
+10. Configuration_Peer_View_Class objects<br>
+11. Layout_Parameters_For_View_Class objects<br>
+12. Layout_Parameters_For_Object_Class objects<br>
+             
+        </p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> Although the sample network defined in sample load file DUIFSNET does
+not include an exception view, it is included in the preceding list in the position
+that it must be loaded.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Study the network in the sample load file DUIFSNET carefully before defining
+your own network. For information about RODM load function syntax, see
+Chapter 10, “Using the RODM Load Function,” on page 239.</p>
+        <div style="width: 890px; height: 5px; background-color: black;"></div>
+        <h2  style="margin-left: 40px;">Chapter 3. Loading the GMFHS Data Model</h2>
+        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This chapter describes how to load the GMFHS and SNA topology manager data
+models, your network definition, and methods into RODM. This chapter also
+describes how to make additions, changes, or deletions to objects when GMFHS is
+active.</p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The GMFHS class structure is provided in RODM load function input file,
+DUIFSTRC, which is shipped with the NetView program.</p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The class structure for the SNA topology manager is provided in RODM load
+function input files, FLBTRDMx, which is also shipped with the NetView program.
+For more information about the FLBTRDMx load function input files, refer to IBM
+Tivoli NetView for z/OS Installation: Configuring Graphical Components.</p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DUIFSTRC and all the FLBTRDMx input files are loaded using sample CNMSJH12.
+Both the DUIFSTRC and all of the FLBTRDMx input files must be loaded for
+GMFHS operation. Note that input file DUIFSTRC must be loaded before any
+FLBTRDMx input files are loaded. This is the order specified in sample CNMSJH12
+and it must not be changed.</p>
+        <hr style= "border-top:2px solid black">
+        <h3  style="margin-left: 40px;">Loading the Data Models and Network Definitions</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With RODM running, use sample CNMSJH12 to load the GMFHS data model and
+your network definition.<br>
+            1. Create RODM statements to define your non-SNA network. See Chapter 2,
+“Defining Your Network to GMFHS,” on page 15 for information about how to
+define your network to RODM.<br>
+2. Update the sample job CNMSJH12 as follows:<br>
+            a. Change the JOB statement to specify your installation's accounting
+information.<br>
+b. Enter the names of the RODM load files that were created in Step 1 into the
+EKGIN1 DD statement on the last line of the sample. For example, if your
+object definitions are in the data set NETVIEW.MYDEFS(OBJECTS), the last
+line of CNMSJH12 is:<br> </p>
+        <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// DD DSN=NETVIEW.MYDEFS(OBJECTS),DISP=SHR</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. Replace RODMNAME with the name of your RODM in the EXEC statement.<br>
+3. Ensure that RODM is running.<br>
+4. Start CNMSJH12.<br>
+            5. Start GMFHS.<br></p>
+        <hr style= "border-top:2px solid black">
+        <h3  style="margin-left: 40px;">Changing Network Definitions When GMFHS Is Running</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            If GMFHS is running when non-SNA objects are to be added, changed, or deleted
+in the RODM data cache, the GMFHS CONFIG command might be required. The
+GMFHS CONFIG command identifies, to GMFHS, the scope of the changes and
+            the type of processing needed to respond to them.<br>
+            Subarea resources that are managed by SNA topology manager can be changed
+anytime without using the GMFHS CONFIG commands.
+        </p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b>
+1. NMGs and domains can be added dynamically without using the GMFHS
+CONFIG command. See “Adding NMGs and Domains When GMFHS Is
+Active” on page 58 for more information.<br>
+2. When you change the GMFHS data stored in RODM while GMFHS is active,
+you might get unpredictable results until the appropriate GMFHS CONFIG
+command is issued and completes.<br>
+            The three GMFHS CONFIG command types are: DOMAIN, NETWORK and VIEW. The following sections list which GMFHS CONFIG command to issue based on the
+field and class you are changing:
+        </p>
+        <h4 style="margin-left: 30px;">DOMAIN</h4>
+          <p style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Used when the changes include changing the association of
+GMFHS_Managed_Real_Objects_Class objects with
+Non_SNA_Domain_Class objects, but do not include changes that require
+that the GMFHS CONFIG NETWORK command be used. See the NetView
+online help for details on the behavior of the CONFIG DOMAIN
+        </p>
+        <h4 style="margin-left: 30px;">NETWORK</h4>
+         <p style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used only when the changes being made include changes to information
+             that describes the characteristics and structure of the NMGs and domains.</p>
+             <h3 style="margin-left: 30px;">VIEW</h3>
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Not needed, has been left in only for migration purposes.<br><br>
+            The GMFHS CONFIG command also has a LOAD parameter. If the default
+LOAD=NO is specified with CONFIG VIEW, no operation is performed. For
+CONFIG DOMAIN and NETWORK, if the default LOAD=NO is specified, all
+command processing is completed except for the invocation of the RODM load
+function. For example, if the contents of the cache are changed by running the
+RODM load function by job posting or by some RODM application other than
+GMFHS, use the GMFHS CONFIG command with LOAD=NO specified. This
+causes the processing within GMFHS, required for the changes, to be completed.<br>
+            If LOAD=YES is specified, the RODM load function is run as part of the command
+processing. If the INDD=ddname the data set or sets identified by ddname will be
+passed to the RODM load function as the input. If the INDD parameter is not
+specified the default is EKGIN3.<br>
+            <b>Note:</b>Use the GMFHS CONFIG command with caution. This command can
+reinitialize some RODM objects that are under one or more non-SNA domains.
+This can result in significant CPU utilization depending on the number of real
+objects that are defined. The amount of CPU utilization can be similar to the
+amount used when GMFHS was initially started.<br>
+            See the NetView online help for more information about the GMFHS CONFIG
+command.
+        </p>
+      <h3 style="margin-right: 20px;">Selecting the Required GMFHS CONFIG Command</h3>
+        <p style="margin-left: 30px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following tables show which GMFHS CONFIG command is required when<br>
+objects in the RODM cache have their field values changed. To determine what
+CONFIG command must be used, use the first of the following rules that applies:
+        <li style="margin-left: 30px;">If any object field change being made requires a CONFIG NETWORK command,
+use that command.</li>
+        <li style="margin-left: 30px;">If any object field change requires a CONFIG DOMAIN command, use that
+command. </li>
+        <li style="margin-left: 30px;"> Finally, if the field is not listed, no CONFIG command is required for any of the<
+object additions or deletions or object field value changes being made. However, issue the RODM CHKPT command after the completion of the RODM load<br>
+function job. This causes a new checkpoint image of the RODM cache to be
+written so that it is available for cache recovery if needed.</li><br>
+        There is no separate table provided for the addition or deletion of the objects
+themselves. This is because, with the exception of SNA Domain objects, a new
+object has no effect until it is linked to another object, and an object cannot be
+deleted until all of its links to other objects have been deleted. The establishment
+and deletion of object links is done by changing field values for fields with data
+type OBJECTLINK or OBJECTLINKLIST. Changes to fields of these types are
+            covered by the tables.</p>
+        <h3>Non_SNA_Domain_Class Changes</h3>
+        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 3 shows which GMFHS CONFIG command to use when changing a field of
+an object in the Non_SNA_Domain_Class.</p>
+        <p style="font-style: italic; margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 3. GMFHS CONFIG Command for Non_SNA_Domain_Class Objects</p>
+
+
+        <style>table thead th { border-bottom: 1px solid #000; }
+            table{border-collapse: collapse;
+                
+            }
+            
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GMFHS CONFIG Command</th>
+    </tr>
+    </thead>
+      
+  <tbody>
+    <tr style="border-bottom: 1px solid #000;">
+          <td>AlertProc</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>CommandTimeoutInterva</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>ContainsResource</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>DomainCharacteristics</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr >
+      <tr style="border-bottom: 1px solid #000;">
+          <td>DomainCharacteristics2</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>EMDomain</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>InitialResourceStatus</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+      <td>PresentationProtocolName</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+        <td>ReportsToAgent</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>SessionProtocolName</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>TransactionProgram</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>WindowSize </td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      
+      
+  </tbody>
+
+        </table>
+<p style="margin-right: 30px;"><b>Note:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ContainsResource field of Non_SNA_Domain_Class objects can specify either
+GMFHS-managed real resources or GMFHS-NMG objects that belong to the domain. If the
+Resources field of the non-SNA Domain object is linked to the Domain field of a
+GMFHS-NMG object, use the CONFIG NETWORK command. If only GMFHS-managed real resources are being linked to or unlinked from non-SNA domain objects, the CONFIG
+DOMAIN command can be used. See the NetView online help for a complete description of
+the CONFIG DOMAIN command before you use it.</p>
+        
+        <h3  style="margin-right: 30px;">SNA_Domain_Class Changes</h3>
+        <p style="margin-right: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 4 shows which GMFHS CONFIG command to use when changing a field of
+an object in the SNA_Domain_Class. Issue the GMFHS CONFIG NETWORK
+command when you create or delete an object of the SNA_Domain_Class</p>
+        <p style="margin-right: 30px; font-style: italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 4. GMFHS CONFIG Command for SNA_Domain_Class Objects</p>
+        
+        
+        <style>table thead th { border-bottom: 1px solid #000; }
+            table{border-collapse: collapse;
+                
+            }
+            
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GMFHS CONFIG Command</th>
+    </tr>
+    </thead>
+      
+  <tbody>
+       
+      <tr style="border-bottom: 1px solid #000;">
+          <td>ContainsResource</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>SNANet</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+    </tbody></table>
+        <h3 style="margin-right: 30px;">NMG_Class Changes</h3>
+        <p style="margin-right: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 5 shows which GMFHS CONFIG command to use when changing a field of
+an object in the NMG_Class</p>
+        <p style="margin-right: 30px; font-style: italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 5. GMFHS CONFIG Command for NMG_Class Objects</p>
+        
+        <style>table thead th { border-bottom: 1px solid #000; width: auto;}
+            table{border-collapse: collapse;
+                
+            }
+            
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GMFHS CONFIG Command</th>
+    </tr>
+    </thead>
+      
+  <tbody>
+       
+      <tr style="border-bottom: 1px solid #000;">
+          <td>AgentStatusEffect</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>CommandRouteLUName</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>Domain</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>NMGCharacteristics</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>ReportsOnDomain</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>TransportProtocolName</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #000;">
+          <td>WindowSize</td>
+          <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;NETWORK</td>
+      </tr>
+    </tbody></table>
+        <h3 style="margin-right: 30px;">GMFHS_Managed_Real_Objects_Class Changes</h3>
+        <p style="margin-right: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 6 shows which GMFHS CONFIG command to use when changing a field of
+an object in the GMFHS_Managed_Real_Objects_Class</p>
+        <p style="margin-right: 30px; font-style: italic;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 6. GMFHS CONFIG Command for GMFHS_Managed_Real_Objects_Class Objects</p>
+        
+        
+        <style>table thead th { border-bottom: 1px solid #000; width: auto;}
+            table{border-collapse: collapse;
+                
+            }
+            
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;GMFHS CONFIG Command</th>
+    </tr>
+    </thead>
+      
+  <tbody>
+       
+      <tr style="border-bottom: 1px solid #000;">
+          <td>Domain</td>
+          <td style="border-bottom: 1px solid #000;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;DOMAIN (see note)</td>
+      </tr>
+    </tbody></table>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> If only GMFHS-managed real resources are being linked to or unlinked from
+non-SNA domain objects, the CONFIG DOMAIN command can be used. See the NetView
+online help for a complete description of the CONFIG DOMAIN command before you use
+it.</p>
+        <h3 style="margin-left: 50px;">Adding NMGs and Domains When GMFHS Is Active</h3>
+        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NMGs and non-SNA domains can be added to RODM while GMFHS is running
+without using the GMFHS CONFIG command. Use the following guidelines when
+defining the objects in RODM.</p>
+        <li style="margin-left: 30px;">Set the appropriate bit to indicate that you want to dynamically add an NMG or
+non-SNA domain.</li>
+        <li style="margin-left: 30px;">Set the appropriate bit in the DomainCharacteristics field to indicate that you do
+not want GMFHS to apply initial or unknown status to resources under a
+non-SNA domain.</li>
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> This only applies when GMFHS initially processes the NMG or non-SNA
+domain. GMFHS applies initial and unknown status normally for all subsequent
+processing.</p>
+        <li style="margin-left: 30px;">If you do not want GMFHS to solicit resource status for a non-SNA domain, set
+the appropriate bit in the DomainCharacteristics field.</li>
+        <li  style="margin-left: 30px;"> Link an NMG to a non-SNA domain after the NMG and domain have been
+defined in RODM. GMFHS uses this link as a signal to start processing a new
+NMG or domain.</li>
+        <div style="width: 890px;height: 5px;background-color: black;"></div>
+        <h2 style="margin-left: 50px;">Chapter 4. Communicating with Network Management<br>
+Gateways</h2>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This section describes how GMFHS communicates with network management
+gateways (NMGs). The NMGs send status information about non-SNA networks to
+GMFHS. GMFHS sends commands for the non-SNA networks to the NMGs.</p><br>
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Non-SNA resources are associated with a non-SNA domain in GMFHS. When you
+define non-SNA domains to GMFHS, you specify the NMG that owns each
+non-SNA domain and its associated resources. You also specify how GMFHS
+communicates with the NMG.</p><br>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The clock on the workstation on which the NMG is running needs to be
+synchronized with the clock on which the host GMFHS is running. The DOMP010
+presentation protocol synchronizes these clocks. For other presentation protocols,
+create your own routine to synchronize the clocks.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Refer to the Service Point Application Router and Remote Operations Service Guide for
+information about using the ROP services. If the clocks are not synchronized,
+GMFHS might not process alerts correctly.</p><br>
+        <p style="margin-left: 30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Use the information provided here to select the correct values for the following
+GMFHS fields:</p>
+        <li style="margin-left: 30px;"> PresentationProtocolName</li>
+         <li style="margin-left: 30px;"> SessionProtocolName</li>
+         <li style="margin-left: 30px;"> TransportProtocolName</li>
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Also use the information to select the correct values for some of the bits of the
+DomainCharacteristics field.</p>
+        
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This section describes what GMFHS expects from an NMG. You need this
+information to create your own service points or NMGs. </p>
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 7 shows the values for the three GMFHS protocol fields for typical NMGs</p>
+        <p style="margin-left: 30px; font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 7. GMFHS Protocol Values for Typical NMGs</p>
+        
+        
+        <style>table thead th { border-bottom: 1px solid #000; width: auto;}
+            table{border-collapse: collapse;
+                
+            }
+            
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Presentation<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProtocolName</th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProtocolName</th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transport<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ProtocolName<th>
+    </tr>
+    </thead>
+    <tbody>
+       
+      <tr style="border-bottom: 1px solid #000;">
+          <td>NAP</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOMP010</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOMS010</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COS</td>
+      </tr>
+        <tr style="border-bottom: 1px solid #000;">
+          <td>NetView OST1</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOMP020</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PASSTHRU</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OST</td>
+        </tr>
+         <tr style="border-bottom: 1px solid #000;">
+          <td>NetView OST</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PASSTHRU</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PASSTHRU</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OST</td>
+        </tr>
+         <tr style="border-bottom: 1px solid #000;">
+          <td>NetView PPI</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NONE</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NONE</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PPI</td>
+        </tr>
+         <tr style="border-bottom: 1px solid #000;">
+          <td>Open Topology<br>
+Interface Agent2</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOMP010</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NONE</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COS</td>
+        </tr>
+         <tr style="border-bottom: 1px solid #000;">
+          <td>PPI</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DOMP020</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PASSTHRU</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PPI</td>
+        </tr>
+    </tbody></table>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 Use the DOMP020 presentation protocol if you want to use parameter substitution. <br>2 IBM Tivoli NetView for z/OS Open Topology Interface Agent.</p>
+        
+        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remember that this table lists typical values for the protocol parameters. Other
+combinations of parameter values are possible and the values you use depend on
+what your NMGs support.</p>
+        <hr style= "border-top:2px solid black">
+        <h3  style="margin-left: 40px;">Defining Non-SNA Presentation Protocol</h3>
+        <p style="margin-right: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The presentation protocol translates commands to and from the syntax used by the
+element management system. The translation is done according to the rules for the
+domain associated with the resource that is the target of the command.<br>
+            The PresentationProtocolName field of the Non_SNA_Domain_Class object
+specifies which protocol is used for the non-SNA domain. The valid protocol
+names are:
+            <li>DOMP010</li>
+             <li> DOMP020</li>
+             <li> PASSTHRU</li>
+             <li> NONE</li>
+        </p>
+        <h3  style="margin-left: 30px;">DOMP010 Presentation Protocol</h3>
+        <p style="margin-right: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DOMP010 protocol enables generic commands to be translated for delivery to
+the gateway associated with the domain and also enables the responses to
+commands formatted using the DOMP010 protocol to be translated to
+DisplayStatus. The DisplayStatus is reflected in the appearance of objects in the
+views. Native and resource-specific commands can also be delivered using the
+DOMP010 protocol supported by the native-element manager or transaction
+program associated with the domain.<br>
+        The DOMP010 presentation protocol specifies that the command messages and
+command response messages from the NMG are formatted according to the rules
+described in “DOMP010 Formatting Rules” on page 63.<br>
+            The DOMP010 protocol provides translation of the following types of commands:<br>
+            <li>Generic commands:<br>
+                – Activate <br>– Display
+                Abnormal Status<br> – Display
+                Status<br>
+                –   Inactivate<br>
+                – Reconfigure <br>
+                – Recycle</li>
+            <li> Session protocol commands</li>
+            <li>Native and resource-specific command text</li>
+        </p>
+        <p  style="margin-right: 30px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DOMP010 protocol also provides for the translation of command responses
+from native element managers for any command.</p>
+        <p  style="margin-right: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For native commands, DOMP010 performs parameter substitution on the
+command entered by the operator. GMHFS replaces the tokens in the command as<br>
+follows:</p>
+        <p  style="margin-right: 30px;"><b>Token Action taken by GMFH</b></p>
+        <p style="margin-right: 30px;"><b>%APPL%</b>
+        <br> &emsp; &emsp;Replace with the value of the TransactionProgram field of the<br>
+ &emsp; &emsp;Non_SNA_Domain_Class object.<br>
+    <b>%DOMAIN%</b><br>
+        &emsp; &emsp;Replace with the value of the EMDomain field of the<br>
+Non_SNA_Domain_Class object.<br>
+        <b>%RESOURCE%</b><br>
+ &emsp; &emsp;Replace with the value of the MyName field of the resource.<br>
+            <b>%SPNAME%</b><br>
+ &emsp; &emsp; &emsp;Replace with the value of the MyName field of the NMG_Class object.<br>
+            <b>%TYPE%</b><br>
+ &emsp;&emsp;Replace with the value of the TypeName field of the<br>
+ &emsp; &emsp;Display_Resource_Type_Class object associated with the resource.<br>
+        &emsp; GMFHS accepts the following parameters in native OST text:
+        &emsp; &emsp; <li> %RESPONSE%</li>
+ &emsp; &emsp;<li> %NORESPONSE%</li></p>
+        <p  style="margin-right: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The %RESPONSE% parameter forces all valid command responses to be returned
+to the workstation. The %RESPONSE% parameter overrides the Response Expected
+bit of the Non_SNA_Domain_Class DomainCharacteristics field. The
+%NORESPONSE% parameter forces the native command to be issued at the OST
+console, and no response is returned to the workstation.</p>
+        <p style="margin-right: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DOMP010 presentation protocol is applicable only on COS and
+program-to-program interface NMGs.</p>
+        <h2  style="margin-right:  20px;">DOMP020 Presentation Protocol</h2>
+        
+        <p style="margin-left: 30px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DOMP020 protocol enables generic commands to be translated for delivery to
+the NMG associated with the domain. The DOMP020 protocol supports native and
+resource-specific command text. Responses to these commands are returned
+unchanged to the command response window of the originating workstation.
+GMFHS does not extract status information from these responses.</p>
+        <p  style="margin-left: 30px;">>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The text of generic commands is retrieved from RODM. GMFHS requests the
+command text from the GMFHS_Managed_Real_Objects_Class object that
+represents the target of the command. If this object does not define the command
+text, GMFHS then requests the command text from the Non_SNA_Domain_Class
+object that represents the domain of the command's target. The Display Abnormal
+Status and Reconfigure generic commands are valid only if the target of the
+command is an object of the Non_SNA_Domain_Class. The fields used for generic<br>
+            <b>Generic Command</b><br>
+            <b style="align-items: center;">&emsp;&emsp;GMFHS Field</b><br>
+            <b>Activate</b><br>
+       &emsp; &emsp; ActivateCommandText<br>
+ 
+            <b>Deactivate</b><br>
+             &emsp;  &emsp; DeactivateCommandText<br>
+            <b>Display Abnormal Status</b><br>
+            &emsp;  &emsp;  DisplayAbnormalStatusCommandText<br>
+            <b>Display Status</b><br>
+             &emsp;  &emsp; DisplayStatusCommandText<br>
+            <b>Reconfigure</b><br>
+             &emsp;  &emsp; ReconfigureCommandText<br>
+            <b>Recycle</b><br>
+             &emsp;  &emsp; RecycleCommandText<br>
+            When GMFHS locates the command, it performs parameter substitution. GMFHS
+looks for any of the following tokens in the command, and replaces them as
+follows:<br>
+            <b>Token Action taken by GMFH</b><br>
+            <b>%APPL%</b><br>
+             &emsp;  &emsp; Replace with the value of the TransactionProgram field of the
+ &emsp;  &emsp; Non_SNA_Domain_Class object.<br>
+            
+            <b>%DOMAIN%</b>
+             &emsp;  &emsp; Replace with the value of the EMDomain field of the<br>
+ &emsp;  &emsp; Non_SNA_Domain_Class object.<br>
+            <b>%RESOURCE%</b><br>
+            &emsp;  &emsp;  Replace with the value of the MyName field of the resource.<br>
+           <b> %SPNAME%</b><br>
+ &emsp;  &emsp; Replace with the value of the MyName field of the NMG_Class object.<br>
+            <b>%TYPE%</b><br>
+ &emsp;  &emsp; Replace with the value of the TypeName field of the<br>
+ &emsp;  &emsp; Display_Resource_Type_Class object associated with the resource.<br>
+            <b>Note: </b>Display Abnormal Status and Reconfigure commands pertain only to
+domains; therefore only the domain object is searched for the command text.     </p>
+<p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DOMP020 protocol is used with all NMG types. The gateways allow
+commands to be delivered to the OST associated with a workstation operator or to
+the central site NetView primary program operator interface task (PPT) if the
+command is from GMFHS. The command procedure or processor that is run for
+the command might directly or indirectly generate an alert. The alert reports the
+resulting resource status.</p>
+        <h2 style="margin-right: 20px;">PASSTHRU Presentation Protocol</h2>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The PASSTHRU protocol specifies that native network command text entered by a<br>
+workstation operator passes directly to the native element management system
+unchanged, and that native network command response text returns to the
+workstation operator without interpretation by GMFHS.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The PASSTHRU presentation protocol specifies that the actual text of the
+commands is retrieved from RODM. The differences between PASSTHRU and
+DOMP020 are that PASSTHRU does not support generic commands and does not
+perform parameter substitution.</p>
+        <h3 style="margin-right: 20px;">NONE Presentation Protocol</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specify NONE for the PresentationProtocolName value for a domain if commands
+are not sent to the NMG associated with the domain. For example, specify NONE
+when domains are defined to only receive alerts for the resources they contain.</p>
+        <h2 style="margin-right: 20px;">Output Formatting For All Presentation Protocols</h2>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This section describes output formatting for the DOMP020 and PASSTHRU
+protocols and for the DOMP010 protocol.</p>
+        <h3 style="margin-left: 30px;">DOMP020 and PASSTHRU Output Formatting</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the NMG is using the COS transport protocol, the subvector 31 contains the
+response to a RUNCMD. The response in subvector 31 is formatted as follows:<br>
+when the native element manager sends multiple lines of response text to GMFHS,
+each line of response text must be put in a separate subvector 31. This ensures that
+each separate line of response text is displayed in the workstation Command
+Responses window as a separate line of text.</p>
+        <h3 style="margin-left: 30px;">DOMP010 Output Formatting</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each separate line of text in a multiple line response is preceded by a separate text
+keyword (TX). See “Text—TX” on page 70 for more information about the use of
+the TX keyword for the DOMP010 protocol.</p>
+        <h2 style="margin-left: 20px;">DOMP010 Formatting Rules</h2>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This section describes the format of the textual data contained in either the<br>
+commands for COS NMGs or the data delivered to program-to-program interface<br>
+NMGs. In this section, the term packet refers to the information in these subvectors.</p>
+        <h4  style="margin-left: 30px;">General Packet Format</h4>
+        <p  style="margin-left: 30px;">A packet is made up of one or more comma-delimited keyword parameters. These<br>
+parameters perform such functions as identifying the command or response. All<br>
+values in the text packet are displayable characters.</p>
+        <li style="margin-left: 30px;"> In the NetView/PC API/CS environment, the displayable characters are coded<br>
+in ASCII.</li>
+        <li  style="margin-left: 30px;">In the SNA network, the characters are coded in displayable EBCDIC.<br>
+NetView/PC API/CS performs the necessary code set translations.</li>
+        <p style="font-size: 14px; margin-left: 30px;">Each parameter has the following general format:</p>
+        <p style="font-size: 12px; margin-left: 30px;">keyword=value</p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each keyword is 2 - characters long, and the equal sign is always present. The<br>
+value is of variable length. For example, if CP is a keyword that has the value<br>
+MINIA, the keyword parameter is:<br>
+        CP=MINIA</p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Keyword values can be made up of more than one data item, delimited with<br>
+commas and surrounded by one set of parentheses, for example:<br>
+CP=(MINIA,MINIB)</p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In a typical packet, several keyword parameters are specified. The keyword
+parameters are also delimited by commas, for example:<br>
+            CM=AE,SQ=10,DM=DOMAIN,CP=(MINIA,MINIB)<br>
+RP=AE,SQ=10,DM=DOMAIN,<br>
+CP=MINIA,ST=U,TM=930601120000,<br>
+CP=MINIB,ST=U,TM=930601120000,<br>
+        </p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In most cases, the order of the individual parameters is unimportant. Exceptions to<br>
+this rule are noted in the descriptions of the keywords.</p>
+        <h3  style="margin-left: 30px;">Keyword and Value Definitions</h3>
+        <p  style="margin-left: 30px;">The packet keywords and their descriptions follow:</p>
+        
+        <table style="margin-left: 30px;">
+<thead>
+<th>Keyword</th>
+<th>Description</th>
+</thead>
+<tbody>
+<tr>
+<td>CE</td>
+    <td >&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; execution</td>
+</tr>
+    <tr>
+<td>CM</td>
+    <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Command identifier, required for commands</td>
+</tr>
+    <tr>
+<td>CP</td>
+    <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Component identifier</td>
+</tr>
+    <tr>
+<td>DM</td>
+    <td>&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Domain identifier</td>
+</tr>
+    <tr>
+<td>PT</td>
+    <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Protocol text</td>
+</tr>
+    <tr>
+<td>RN</td>
+    <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Reason</td>
+</tr>
+    <tr>
+<td>RP</td>
+    <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Response identifier, required for responses</td>
+</tr>
+    <tr>
+<td>SN</td>
+    <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Command sender identifier</td>
+</tr>
+    <tr>
+<td>SQ</td>
+    <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Message sequence number, required for commands and responses</td>
+</tr>
+    <tr>
+<td>ST</td>
+    <td>&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Status identifier</td>
+</tr>
+    <tr>
+<td>TM</td>
+    <td> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Time stamp</td>
+</tr>
+    <tr>
+<td>TX</td>
+    <td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Native command or response text</td>
+</tr>
+
+
+</tbody>
+</table>
+        
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following sections describe each keyword and its values.</p>
+        <h3 style="margin-left: 30px;">Command Execution—CE</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command execution status keyword (CE) indicates a failure to successfully run
+a command. It differs from a negative response (RP=X) in that the negative
+response applies to the entire command. A command execution failure applies to a
+subset of the command.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The keyword values for CE are value lists contained in a text string. The values are
+the same as those for the reason (RN) keyword. See “Reason-RN” on page 67 for
+these values.</p>
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When the command is Display Status (CM=D) or Display Abnormal Status<br>
+(CM=A), and the statuses of more than one component are carried in the response,
+a command execution failed for any one of the components. This is indicated by
+the following:</p>
+        <p style="font-size: 13px; margin-left: 30px;">&nbsp;&nbsp;CP=component_name,ST=X,<br>
+CE=(reason text)</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The same command response carries the status of those components for which the
+command was successful. If command execution fails for each component
+individually, the CE keyword and ST=X are returned for each component.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> The use of ST=X, is required, and indicates that any status already reported<br>
+for this component is still in effect.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The CE keyword is position dependent. CE must follow the CP keyword for its<br>
+subject component, and precede any other components. That is, the CP and CE<br>
+pair for a given component must not be split by another CP keyword.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;The CE keyword is supported for Display Status and Display Abnormal Status<br>
+commands (CP=A and CP=D).</p>
+        <h3 style="margin-left: 30px;">Command—CM</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command keyword, CM, is the command issued to the element manager. This<br>
+keyword is required on any packet sent from the host to an element manager. <br><br>
+            CM values have a two-part definition:</p>
+        <li style="margin-left: 30px;"> The first byte of the value is the command type. The command type classifies<br>
+the type of command you issue to the non-SNA device. The following list<br>
+describes the command types.</li>
+        <table style="margin-left: 30px;">
+<thead>
+<th>Value</th>
+<th>Description</th>
+</thead>
+<tbody>
+    <br>
+<tr>
+<td><b>A</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Display abnormal status</td>
+</tr>
+    <tr>
+<td><b>C</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Reconfigure domain</td>
+</tr>
+    <tr>
+<td><b>D</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Display status for a named resource or resources</td>
+</tr>
+    <tr>
+<td><b>I</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Inactivate resource</td>
+</tr>
+    <tr>
+<td><b>N</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Native command</td>
+</tr>
+    <tr>
+<td><b>P</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Protocol message</td>
+</tr>
+    <tr>
+<td><b>R</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Recycle resource</td>
+</tr>
+    <tr>
+<td><b>V</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Activate resource</td>
+</tr>
+    <tr>
+    <td><b>X</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;Negative response</td>
+</tr>
+
+</tbody>
+</table>
+        <li style="margin-left: 30px;"> The second byte is the continuation.<br>
+The continuation byte is used in conjunction with command types that can<br>
+require multiple responses.</li>
+        <table style="margin-left: 30px;">
+<thead>
+<th>Value</th>
+<th>Description</th>
+</thead>
+<tbody>
+     <br>
+<tr>
+<td><b>E</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;This is either an initial request or the last response to an initial request.</td>
+</tr>
+    <tr>
+<td><b>M</b></td>
+<td> &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;This is either a continuation request or not the last response when<br>
+ &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;multiple responses are required to service an initial request.<br>
+For more information about the importance of the continuation byte, see<br>
+“Multiple-Response Protocol” on page 71.</td>
+</tr>
+    <tr>
+        </tbody>
+</table>
+        <h3 style="margin-left: 30px;">Component ID—CP</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The component ID provided by the CP keyword must match the resource portion
+of the MyName value of a GMFHS_Managed_Real_Resource object in the RODM
+data cache. For example, if the MyName of the resource is OTTAWA.MINIA,
+specify CP=MINIA.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can specify multiple resources with one CP keyword by using a value list. For
+example, if three resources are included in one command, the CP keyword is:<br>
+CP=(MINIA,MINIB,MINIC)</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> Command responses use multiple CP values, rather than a component ID
+list, if the response is for multiple resources.</p>
+        <p  style="margin-left: 30px;">The size of the CP keyword value depends on the following:</p>
+        <li style="margin-left: 30px;">The type of NMG containing the element manager</li>
+        <li style="margin-left: 30px;"> The size of required keywords in the command</li>
+<li style="margin-left: 30px;">The size of optional keywords in the command</li>
+        <p style="margin-left: 30px;">The maximum command size depends on the NMG type. The maximum size can
+be one of the following: </p>
+        <li style="margin-left: 30px;">240 characters for the COS gateway</li>
+        <li style="margin-left: 30px;"> 256 characters for OST gateways</li>
+        <li style="margin-left: 30px;">253 characters for program-to-program interface gateways</li>
+        <p style="margin-left: 30px;">To determine the valid maximum size of the resource names in the CP keyword,
+do the following:</p>
+        <p style="margin-left: 30px;">1.&emsp;&emsp; Add the number of characters in the base command and the number of
+            characters in the CP keyword syntax.</p>
+<p>2. &emsp;&emsp;Subtract that total from the maximum length that the NMG supports.
+        </p>
+        <p>&emsp;&emsp;For example, the following command contains 24 characters:<br>
+&emsp;&emsp;CM=DE,SQ=5,DM=DOMAIN,CP=aaa</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;Therefore, the maximum size of the resource name aaa is 216 characters for the
+COS gateway, 232 characters for OST gateways, and 229 characters for<br>
+program-to-program interface gateways.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;The following command contains 28 characters:</p>
+<p style="font-size: 13px;margin-left: 30px;">CM=DE,SQ=5,DM=DOMAIN,<br>
+CP=(aaa,bbb,ccc</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;Therefore, the maximum size of the resource names aaa, bbb, and ccc is 212
+characters for the COS gateway, 228 characters for OST gateways, and 225
+characters for program-to-program interface gateways.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;If you specify multiple components in the command and the size of the command
+exceeds the maximum, GMFHS automatically reduces the number of resources in
+the command to reduce the command size.</p>
+        
+        <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;DM=OTTAWA</p>
+<p style="margin-left: 30px;">The DM value can be up to 8 characters in length.</p>
+        <h3 style="margin-left: 30px;">Protocol-PT</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The protocol keyword, PT, is used when a command identifier (CM) or response
+identifier (RP) command type equals protocol command (P); for example, CM=PE<br>
+(E is the continuation byte).</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The PT values are protocol commands that control the communication session
+between two cooperating processes: on the host, and on the target of the command
+(the native element manager). Because all commands require responses, any
+protocol command request must have a protocol-type response.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 8 lists defined PT values and displays the session protocol commands<br>
+used for the DOMS010 protocol.</p>
+        <p style="font-style: italic; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 8. Protocol Command Values</p>
+        <style>table thead th { border-bottom: 1px solid #000; width: auto;}
+            table{border-collapse: collapse;
+                
+            }
+            
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Protocol Command</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Meaning</th>
+    </tr>
+    </thead>
+    <tbody><h2 style="margin-left: 30px;">Domain—DM</h2>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The domain keyword, DM, specifies the non-SNA domain of a resource when
+multiple non-SNA domains are supported. The domain keyword is optional.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DM signifies the domain in which the GMFHS associates a resource specified with
+the CP keyword. DM needs to match the EMDomain field of the
+Non_SNA_Domain_Class object. For example, if the MyName of the resource is
+            OTTAWA.MINIA, the keyword parameter format is:</p>
+       
+      <tr style="border-bottom: 1px solid #000;">
+          <td>SESSION_REQUEST</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sent by GMFHS to the element manager to request that a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;session be established.</td>
+          
+      </tr>
+        <tr style="border-bottom: 1px solid #000;">
+          <td>SESSION_REQUEST_ACCEPT</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A response acknowledging a SESSION_REQUEST protocol<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command. This command does not indicate that a session is<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+established.</td>
+          
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>INIT_ACCEPT</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returned by GMFHS to acknowledge receipt of the INIT
+alert</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>INIT_ACCEPT_ACCEPT</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A response acknowledging the INIT_ACCEPT protocol<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                command.</td>
+            <tr style="border-bottom: 1px solid #000;">
+                <td>SET_CLOCK</td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sent by GMFHS after it receives the
+INIT_ACCEPT_ACCEPT <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;protocol command and if the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+SET_CLOCK protocol command is supported by the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+domain's native element manager. This message is sent only<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if the support set clock bit is set to "on" in the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DomainCharacteristics field.<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    SET_CLOCK provides the current local time in its TM<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+parameter value. This message is issued every 24 hours for<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+as long as the session remains active
+                </td>
+                <tr style="border-bottom: 1px solid #000;">
+                    <td  style="border-bottom: 1px solid #000;"> SET_CLOCK_ACCEPT</td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Returned by the native element manager to acknowledge
+                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+the SET_CLOCK protocol command.</td>
+        </tr>
+    </tbody></table>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> The values for the PT keyword in commands coming from GMFHS are lowercase. GMFHS is not case-sensitive on the response value</p>
+        <br>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;For example, if the GMFHS is responding to an INIT alert from the NMG, the
+format of the packet is:</p>
+        <p  style="margin-left: 30px; font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;CM=PE,DM=DURHAM,SQ=7,PT=(INIT_ACCEPT)</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;The response to the INIT_ACCEPT is:</p>
+        <p style="margin-left: 30px; font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;RP=PE,DM=DURHAM,SQ=7,PT=(INIT_ACCEPT_ACCEPT)</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;If the SET_CLOCK protocol command is supported, GMFHS sends it to the NMG
+every 24 hours, allowing the NMG to set its clock to the correct time. The current
+time is carried by the TM keyword and accounts for the NMG's offset specified in
+the INIT alert. For example:</p>
+        <p  style="margin-left: 30px; font-size:14px;">&nbsp;&nbsp;&nbsp;&nbsp;CM=PE,SQ=8,DM=DURHAM,PT=(SET_CLOCK),TM=930101120000<br>
+RP=PE,SQ=8,DM=DURHAM,PT=(SET_CLOCK_ACCEPT)</p><br>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;See “Session Establishment for DOMS010” on page 74 for more information about
+these protocols.</p>
+        <h3 style="margin-left: 30px;">Reason-RN</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;The reason keyword (RN) indicates why a request was not honored. RP=XE is
+always used with the RN keyword.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;The reason value is a text string in value list format. For example:<br>
+RN=(execution node inaccessible)</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;Table 9 lists the supported text values</p>
+        <p style="margin-left: 30px; font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;Table 9. Reason Values</p>
+        
+        <style>table thead th { border-bottom: 1px solid #000; width: auto;}
+            table{border-collapse: collapse;
+                
+            }
+            
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+       
+      <tr style="border-bottom: 1px solid #000;">
+          <td>Aborted</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An error occurred prohibiting the completion of a request<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(failure in memory, CPU, disk, and so on).</td>
+      </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Canceled</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The request was canceled before it can be completed</td>
+        </tr>
+         <tr style="border-bottom: 1px solid #000;">
+             <td>Component unknown</td>
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The target component is unknown.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+             <td>Currently not allowed</td>
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command type is supported but cannot be run by the<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target component at this time.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Execution node inaccessible</td>
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The target node that runs the requested command is not<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+accessible.
+            </td>
+        </tr>
+         <tr style="border-bottom: 1px solid #000;">
+             <td>Failed</td>
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command processing completed, but failed to achieve<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+the expected results (ACTIVATE did not result in the<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 component becoming active).</td></tr>
+         <tr style="border-bottom: 1px solid #000;">
+             <td>Invalid command ID</td>
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command type is not valid.</td>
+        </tr>
+          <tr style="border-bottom: 1px solid #000;">
+              <td>Invalid parameter</td>
+               <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A keyword parameter was incorrect and prohibited the<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   execution of the command.</td></tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>No resources</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There were insufficient resources available to run the request<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                (memory, CPU, disk, and so on).</td></tr>
+         <tr style="border-bottom: 1px solid #000;">
+             <td>Not allowed</td>
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command type is supported but is not allowed for the
+<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;target component.</td></tr>
+             
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Not supported</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command type is not supported by the entity<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                processing the command.</td></tr>
+        
+         <tr style="border-bottom: 1px solid #000;">
+             <td>Preempted</td>
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The request was preempted by another process before it can<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 be completed.</td></tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Timed out</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The request timed out before a valid response can be<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                processed.</td></tr></tbody></table>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> GMFHS is not case-sensitive on the response values.</p>
+    <h3 style="margin-left: 30px;">Response—RP</h3>    
+  <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The response keyword, RP, identifies a command response packet. The response
+keyword values are the same as described for the command keyword, CM, under
+“Command—CM” on page 64. RP values also use the continuation byte as
+described in the CM values.<br>
+      For example, if you issue a Display Status command for a single component, the
+response is positive and no continuation message is required. The format of the
+keyword parameter is:
+        </p>
+        <p style="font-size: 14px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;RP=DE,SQ=5,DM=DOMAIN,CP=MINIA</p>
+        <br>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the response to a request is negative (request cannot be successfully completed),
+an X is placed in the first byte for the command type. For example:<br>
+RP=XE,SQ=5,DM=DOMAIN,RN=(no resources</p>
+        <h3 style="margin-left: 30px;">Command Sender ID—SN</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;The command sender ID keyword, SN, identifies the sender of the command. The<br>
+SN keyword is included in all commands. The keyword value is always GMFHS:</p>
+        <p style="font-size: 14px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;SN=GMFHS</p>
+        <h3 style="margin-left: 30px;">Message Sequence Number—SQ</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The message sequence number keyword, SQ, contains a unique message sequence
+number that identifies either the request or response. The message sequence
+number of a response is identical to the sequence number used in the original
+request. For example, if you issue a Display Status command for one component
+with a sequence number of 6, the response to that request also has a sequence
+number of 6.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SQ provides a correlation for the continuation responses. If a single request
+requires multiple responses, the message sequence number is used to correlate all
+of the responses to the original request. For example, if you issue a Display
+Abnormal Status COMPONENTS command with a message sequence number of
+        35, the first response in a series of responses has a message sequence number of 35
+and the continuation byte set to more (M). For example:</p>
+        <p style="font-size: 14px; margin-left: 30px;">CM=AM,SQ=35</p>
+        <p style="margin-left: 30px;">The originator can send another request with the continuation byte set to M and a
+message sequence number of 35. When the responder receives this request, it
+knows to continue sending the data that does not fit in the previous response
+packet. This multiple exchange continues until the original request is satisfied with
+the continuation byte in the response being set to end (E).
+        <br>
+        Message sequence numbers roll over after reaching 999.</p>
+        <h3 style="margin-left: 30px;">Status—ST</h3>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The status keyword, ST, can be used to describe either of the following:</p>
+        <li   style="margin-left: 30px;">The status of a component in response to a display status (CM=A or CM=D)
+command</li>
+        <li  style="margin-left: 30px;">The resulting component status in response to an activate (CM=V), deactivate
+(CM=I), or recycle (CM=R) command</li>
+        <p>&nbsp;&nbsp;T&nbsp;&nbsp;he value for a status keyword can be the GMFHS external status of the resource,
+which is a 1-byte value.<br>
+            Only one status value type is enabled for any given resource in a response
+message.<br>
+            When status is reported on multiple resources, the ST keyword parameter and
+value must immediately follow each associated component ID keyword (CP). If the
+ST and TM keywords are sent together, their specific order does not matter, as long
+as they both follow the associated CP keyword.<br><br>
+            If the GMFHS external status of a resource is unsatisfactory, the format of the ST
+keyword parameter is:<br>
+ST=U<br>
+            If the GMFHS external statuses of components NODE1 and NODE2 are being
+reported, and their respective statuses are satisfactory and unsatisfactory, the
+            format of the ST keyword parameter is as follows:</p>
+            <p style="font-size: 14px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;CP=NODE1,ST=S,TM=890315120801,CP=NODE2,ST=U,TM=890315120814</p>
+        <h3 style="margin-left: 30px;">Time Stamp—TM</h3>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The time-stamp keyword, TM, describes the local date and time. The TM value
+and keyword are required whenever a command response provides a component,
+and for each component status provided in the response. This includes D, A, I, V, and R commands. The time-stamp keyword can be in other responses but is
+ignored. The TM keyword is also included on a SET_CLOCK session protocol 
+command to specify the element manager's clock setting.</p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; When time is reported on multiple resources, the TM keyword parameter and
+value must immediately follow each associated component ID keyword (CP). If the
+TM and ST keywords are sent together, their specific order does not matter, as long
+            as they both follow the associated CP keyword. The format of the time stamp is:</p>
+        <p style="font-size: 14px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;TM=yymmddhhmmss</p>
+        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;The time stamp variables are defined as:</p>
+        
+                            <table style="margin-left: 30px;">
+<thead>
+    <tr>
+<th><b>yy</b></th>
+&emsp;&emsp;
+<th>year</th></tr>
+ <tr>
+<th><b>mm</b></th>
+<th>&emsp;&emsp;&emsp;&emsp;&emsp;month (01 - 12)</th></tr>
+    <tr>
+    <th><b>dd</b></th>&emsp;&emsp;&emsp;&emsp;
+    <th>&emsp;&emsp;&emsp;&emsp;day (01 - 31)</th>
+        </tr>
+    <tr>
+        <th><b>hh</b></th>
+        <th>&emsp;&emsp;&emsp;&emsp;hour (00 - 23)</th>
+    </tr>
+     <tr>
+        <th><b>mm</b></th>
+        <th>&emsp;&emsp;&emsp;&emsp;&emsp;minute (00 - 59)</th>
+    </tr>
+     <tr>
+        <th><b>ss</b></th>
+        <th>&emsp;&emsp;&emsp;&emsp;&emsp;second (00 - 59)</th>
+    </tr>
+             </thead></table>
+        <p style="margin-left: 30px;">For example, if a status is being reported as of 3:58:21 p.m. local time on 28 May, 2013, the TM keyword parameter is:</p>
+        <p style="margin-left: 30px; font-size: 14px;">TM=130528155821</p>
+        <h3 style="margin-left: 30px;">Text—TX</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The text keyword, TX, provides support for native commands and their responses.
+The value for TX is a string of text.<br>
+            For commands, the TX value is the text of a native network command, such as a
+command entered at the native element manager's console. The following is the
+data item format for the SHOW CIRCUIT A native command:<br> 
+            TX=(SHOW CIRCUIT A) <br>
+            For responses, TX is the response text received at the native element manager's
+console. Command responses are shown in the Command Response window, if the
+command was issued by the operator. Each occurrence of the TX keyword results
+in one line of text displayed at the NetView workstation. The following is the
+format of the response keyword parameter, if the response to the command is
+CIRCUIT A CONFIGURED AND OPERATIONAL:<br>
+         TX=(CIRCUIT A CONFIGURED AND OPERATIONAL)</p>
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;If the response to the command is a multiple line response, the format of the
+response keyword parameters is:</p>
+        <p  style="margin-left: 30px; font-size: 14px;">&nbsp;&nbsp;&nbsp;&nbsp;TX=( COMMAND FAILURE STATISTICS),<br>
+TX=(ROUTES ERRORS HITS MISSES),<br>
+TX=( 40 250 2000 4)</p><br>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Commas separate the individual parameter lines. In the case of text responses, the
+order of the parameter lines is important, and each separate TX keyword results in
+a separate line of text in the Command Response window. <br>
+        A ) character (right parenthesis) ends the TX text string. If the text includes an
+imbedded ) character, precede the ) with a second ) character. The following is the
+format of the response keyword parameter, if the response to the command is
+CIRCUIT (A) CONFIGURED AND OPERATIONAL:<br>
+TX=(CIRCUIT (A)) CONFIGURED AND OPERATIONAL)
+    </p>
+    <h2 style="margin-left: 20px;">Command Formatting and Protocol Examples</h2>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This section provides examples of the required presentation processing protocol.
+Functionally, there are two protocols:
+    <li style="margin-left: 30px;">Single-response protocol</li>
+            <li style="margin-left: 30px;"> Multiple-response protocol</li>
+            <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See “Keyword and Value Definitions” on page 63 for a description of the various
+keywords and values that make up the command and response packets of the
+command. See “Command—CM” on page 64 for a list of the command types and
+continuation bytes.</p>
+    <h3 style="margin-left: 30px;">Single-Response Protocol</h3>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The single-response protocol consists of a command designated as an initial
+command and a response designated as a last response. Figure 16 shows the
+packets exchanged for a Display Status command and response.</p>
+        <center>
+    <img src="Screenshot%20(13).png">
+        </center>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command, sent from GMFHS, contains the CM keyword. Maintaining the
+protocol, the first character of the CM value, D, is interchangeable. It signifies the
+display status command type. This value can also be any command type valid for
+the command.</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;However, the E value in the continuation character specifies an initial command.
+This character must always be in the first occurrence of a command packet,
+regardless of whether or not additional command packet continuations
+(continuation value = M) are required.</p>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In the response from the native element manager, the RP keyword has the value
+DE. The command type character is interchangeable. The E value in the
+continuation character specifies that the response is the last response generated.</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The protocol has an additional check in the SQ keyword. The SQ value for a
+response must equal the SQ value for the command.</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As the following example shows, the single-response protocol allows for a
+response containing data for more than a single resource.</p>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command requests the status of three resources, RALV4.RALXT1,
+RALV4.RALXT2, and RALV4.TX02, in a single CP keyword parameter.</p>
+    <p style="font-size: 14px;">CM=DE,DM=EASTSIDE,CP=(RALV4.RALXT1,RALV4.RALXT2,RALV4.TX02),SQ=1</p>
+    <p  style="font-size: 14px;">The response contains separate CP keywords for each requested resource.</p>
+    <p  style="font-size: 14px;">RP=DE,DM=EASTSIDE,CP=RALV4.RALXT1,ST=N,TM=901201135901,<br>
+CP=RALV4.RALXT2,ST=N,TM=901201135912,<br>
+CP=RALV4.TX02,ST=D,TM=901201135914,SQ=1</p>
+    <p  style="font-size: 14px;"><b>Note:</b> The CM and SQ keyword parameters are in the command. RP and SQ
+parameters are in the response.</p>
+    <h2 style="margin-left: 30px;">Multiple-Response Protocol</h2>
+    <p  style="font-size: 14px;">When the response data is too large to fit in a single response, GMFHS and the<br>
+NMG use the multiple-response protocol.</p>
+    <p style="font-size: 14px;">The multiple-response protocol consists of: </p>
+    <i style="margin-left: 30px;">A command designated as an initial command</i>
+    <li style="margin-left: 30px;">An unlimited number of continuation responses and commands</li>
+    <li style="margin-left: 30px;"> A last response</li>
+    <p style="margin-left: 30px;">Figure 17 shows the packets exchanged for a Display Status command and the
+response in the simplest multiple-response case</p>
+        <center>
+    <img src="Screenshot%20(14).png">
+        </center>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The initial command, sent from the NetView program, contains the CM keyword
+with the continuation character set to E (CM=AE). The NMG response indicates
+that the response does not contain all of the data by including the value M as the
+RP keyword continuation parameter (RP=AM).</p>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To get more of the response data, GMFHS reissues the request. All request
+parameters are the same as the initial request except for the continuation
+parameter, which is set to M (CM=DM). The NMG sends the remaining data and
+indicates that no more data will be sent by setting the continuation parameter to E
+(RP=AE).</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following initial command calls for a display of all resources in the non-SNA
+domain B3088P2 that have a status of abnormal:<br>
+CM=AE,DM=B3088P2,SQ=44</p>
+    <p style="margin-left: 30px;">The following response results:</p>
+    <p  style="margin-left: 30px;">RP=AM,DM=B3088P2,SQ=44,CP=TIM,ST=A,TM=911231235959,<br>
+CP=A0488P23,ST=C,TM=920101000000,<br>
+CP=A0488P24,ST=U,TM=920101000001</p>
+    <p style="margin-left: 30px;">This response indicates that there is a continuation of the response (RP = AM) and
+provides the statuses of three resources, A0488P22, A0488P23, and A0488P24.</p>
+    <p  style="margin-left: 30px;">The command is sent again:</p>
+    <p style="margin-left: 30px;">CM=AM,DM=B3088P2,SQ=44</p>
+    <p style="margin-left: 30px;">The continuation character is set to M (CM = AM), indicating that the command is
+a continuation of the previous command with sequence number 44 (SQ=44).</p>
+    
+    <p  style="margin-left: 30px;">Finally, another response ends the exchange:<br>
+RP=AE,DM=B3088P2,SQ=44,CP=RALV4.TX02,ST=A,TM=920101000002</p>
+    <p style="margin-left: 30px;">The continuation character is set to E (RP=AE), indicating that this is the last
+response.</p>
+    <h2 style="margin-left: 20px;">Timing Considerations</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Because status information is contained in both generic alerts and command
+responses, GMFHS provides a time stamp at the time it processes the alert or
+response. The date and time of an alert, are provided by the native element
+manager or its agent in the NMG.</p>
+    <h3  style="margin-left: 30px;">Alerts</h3>
+    <p style="margin-left: 30px;">The NetView program assumes that the effective time of an alert when the alert is
+received by the NetView program.</p>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This standard presents problems for non-SNA alerts reported through an NMG.
+The alert can be delayed significantly in the non-SNA network and in the NMG
+before it is delivered to the VTAM program and then to GMFHS. Delays can result
+in inaccurate alert time-stamping that complicates or defeats efforts at network
+problem resolution. GMFHS uses the following rules to overcome these
+shortcomings:</p>
+    <li style="margin-left: 30px;">The alert originator can include a date/time subvector in the alert. It overrides
+the time that the NetView program receives the alert. The Greenwich mean time
+(GMT) offset in the subvector is used, if in the optional GMT offset subfield.</li>
+    <li style="margin-left: 30px;">If the alert date/time subvector does not include the GMT offset and the native
+element manager reported its GMT offset at session establishment, the native
+element manager's offset is used.</li>
+    <li style="margin-left: 30px;">If the alert date/time subvector does not include the GMT offset, and session
+establishment does not provide an offset, the time in the date/time subvector is
+used and normalized with the NetView program's local GMT offset.</li>
+    <h3 style="margin-left: 30px;">Command Responses</h3>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS requires that the time-stamp keyword parameter (TM) be included in any
+command response containing a component status. However, a status response can
+arrive at GMFHS after a more recent alert for the same component. This happens if
+the native element manager is assembling a response with statuses from multiple
+components, and the status of one component changes after it is in the response,
+but before the response is sent. If the native element manager sends an alert for
+this component before it sends the command response, GMFHS receives the status
+indications in the wrong order.</p><br><br>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS recovers from this situation by comparing time stamps. If a status update
+(either an alert or a command response) is time stamped earlier than the most
+recent status reported, GMFHS does not apply the new status. GMFHS logs an
+audit message and a console message.</p>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The time-stamp keyword does not include the GMT offset. GMFHS normalizes
+time stamps to compare them. If the INIT alert used to establish the session
+between GMFHS and the native element manager contains the native element
+manager's GMT offset, this offset is used. Otherwise, the GMFHS local GMT offset
+is used.</p>
+    <hr style= "border-top:2px solid black">
+    
+    <h2 style="margin-left: 40px;">Defining Non-SNA Session Protocols</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The session protocol you specify for a non-SNA domain indicates how GMFHS
+establishes, maintains, and ends command and response communication sessions
+for that domain. The presentation protocol used for a domain is specified in the
+SessionProtocolName field of the non-SNA domain object in RODM. The valid
+session protocol names are:</p>
+    <li style="margin-left: 30px;">DOMS010</li>
+    <li style="margin-left: 30px;"> PASSTHRU</li>
+    <li  style="margin-left: 30px;"> NONE</li>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GMFHS is also responsible for establishing, maintaining, and ending
+communication sessions with the element managers. GMFHS uses the value of the
+SessionProtocolName field of the Non_SNA_Domain_Class object to determine
+how to establish a session with the element manage</p>
+    <h2 style="margin-left: 40px;">DOMS010</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DOMS010 protocol specifies a set of rules and a command syntax that
+coordinate the establishment of a command session between GMFHS and the
+non-SNA domain.</p><br>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DOMS010 session protocol specifies that GMFHS and the element manager
+must verify each other's identities before GMFHS determines that a session exists.
+The commands GMFHS sends the element manager, and the responses it expects,
+are described in “Protocol-PT” on page 66. In addition, “Session Establishment for
+DOMS010” contains examples of the identification sequence.</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the domain specifies DOMS010, the commands are formatted according to the
+DOMP010 formatting rules, regardless of the values in the
+        PresentationProtocolName field.</p>
+    <h2 style="margin-left: 40px;">PASSTHRU</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The PASSTHRU protocol specifies that a command session is to exist between
+GMFHS and the non-SNA domain without any exchange of session establishment
+information. GMFHS assumes the command session is active immediately upon
+GMFHS initialization.</p>
+     <h2 style="margin-left: 40px;">NONE</h2>
+    <p style="margin-left: 30px;">The NONE protocol indicates that there is no command support for the domain.</p>
+    <h2 style="margin-left: 40px;"> Session Establishment for DOMS010</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DOMS010 session protocol stipulates that GMFHS must acquire a session with
+the domain before any other commands are available. Sessions are initiated by
+GMFHS, or from the element manager. Figure 18 on page 75 shows a session
+establishment initiated from the element manager.</p><br><br>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To view what GMFHS is reporting as the status of a domain, use the GMFHS
+SHOW DOMAIN command. Refer to NetView online help for information about
+the SHOW command.</p>
+        <center>
+    <img src="image1.png">
+        </center>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The element manager can initiate a session with GMFHS by sending an INIT
+generic alert. When GMFHS receives the alert, it does the following:</p>
+        
+        <li  style="margin-left: 30px;">Responds to the NMG with an INIT_ACCEPT protocol command. The INIT </li>
+    <li   style="margin-left: 30px;"> Sends a SET_CLOCK protocol command, if supported</li>
+    <li   style="margin-left: 30px;"> Sends one or more Display Abnormal Status or Display Status generic
+commands to retrieve the current status of all the resources. If Display Abnormal
+Status is not supported, GMFHS issues a Display Status generic command, if
+supported, for every resource. Whether these commands are supported is
+specified by the DomainCharacteristics field of the Non_SNA_Domain_Class
+object that defines the domain to GMFHS.</li>
+    <h2  style="margin-left: 40px;">Session Establishment for DOMS010 Using CNMS440</h2>
+    
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Some service points that implement the DOMS010 session protocol might not
+provide alerts that are adequate for determining whether the service point is
+running. The CNMS4406 sample is provided by the NetView program to facilitate
+session establishment between GMFHS and these service points.</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This sample provides the INIT and DOWN alert portion of DOMS010 session
+establishment. Use this sample to specify the following items:</p>
+    <li style="margin-left: 30px;">The three named elements of a non-SNA domain: the service point (SP), the
+transaction program (TP), and the element management subsystem (EMS). For
+more information about these, see “Defining Non-SNA Domains” on page 34.</li>
+    <li style="margin-left: 30px;">Whether to send an INIT or DOWN alert. This alert then matches a similarly
+named domain object in RODM with the service point.</li>
+    <p  style="margin-left: 30px;">The CNMS4406 sample has the following syntax:</p>
+        <center>
+    <img src="image2.png">
+        </center>
+    <p style="font-style: italic;margin-left: 30px;">Where:</p>
+    <p style="font-style: italic;margin-left: 30px;">sp_name</p>
+    <p style="margin-left: 30px;">&emsp;&emsp;Indicates the service point (SP) name as defined to VTAM.</p>
+    <p style="font-style: italic;margin-left: 30px;">domain_name</p>
+    <p  style="margin-left: 30px;"> &emsp;&emsp;Specifies the domain name (also known as the EMS).</p>
+    <p style="margin-left: 30px;">The CNMS4406 sample is a NetView command processor coded in the C language.
+To use this sample, it must first be compiled using C with the LONGNAME
+compile option and placed in an executable NetView library. </p><br><br>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note: </b>For information about how to compile samples, see IBM Tivoli NetView for
+z/OS Programming: PL/I and C. For information about the LONGNAME compile
+option, see the z/OS XL C/C++ Programming Guide (SC09-4765).</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You must also place the following CMDDEF statements in the CNMCMD member
+in the DSIPARM data set (use included file CNMCMDU for migration purposes):</p>
+    <p style="margin-left: 30px; font-size:  14px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CMDDEF.CNMS4406.MOD=CNMS4406<br>
+CMDDEF.CNMS4406.RES=N</p>
+    <p style="margin-left: 30px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For example, to run sample CNMS4406 for a domain object named
+A0488P31.A94306F8.NETVIEW, an INIT alert can be sent using the following
+command from either the NetView command facility or the NetView automation
+table:</p>
+    <p style="margin-left: 30px; font-size:  14px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CNMS4406 INIT A0488P31 A94306F8 NETVIE</p><br>
+    <p style="margin-left: 30px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To establish a session between GMFHS and the service point when both are active,
+place this sample in your automation table to always send the appropriate INIT
+and DOWN alerts.</p>
+    <h2  style="margin-left: 40px;"> GMFHS-Initiated Session Establishment</h2>
+    <p   style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Although GMFHS is a passive session partner, it can prompt the element manager
+to initiate a session. The DomainCharacteristics field of a Non_SNA_Domain_Class
+object confirms that a GMFHS session has been established and solicits status from
+the NMG for the domain. This prompting can occur:</p>
+    <li style="margin-left: 30px;">At GMFHS startup, and at user-defined time intervals until the session is
+acquired</li>
+    <li style="margin-left: 30px;">When GMFHS detects an NMG status change to satisfactory, and GMFHS does
+not have a session with an element manager under the NMG</li>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DOMS010 protocol uses the same protocol commands shown in Table 8 on
+page 66 for the DOMP010 protocol. The exchange occurs as illustrated in Figure 19
+on page 77.</p>
+    <center>
+        <img src="Screenshot%20(18).png">
+        </center>
+    <p style="margin-left: 30px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS initiates a session with an element manager by sending a
+SESSION_REQUEST protocol command. When the element manager receives this
+command, it responds with SESSION_REQUEST_ACCEPT protocol command and
+generates the generic INIT alert. The rest of this process is described in “Session
+Establishment for DOMS010” on page 74.</p>
+    
+        <h2 style="margin-left:50px; ">INIT Generic Alert for Session Establishment</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In addition to protocol commands, the DOMS010 protocol includes the INIT alert.
+An element manager generates an INIT alert to establish a session with GMFHS.</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 10 lists the subvectors and data that need to appear in the INIT generic alert.</p>
+    <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note: </b>Unless noted as optional, all subvectors and data are required.</p>
+        
+        <p style="font-style: italic">Table 10. Generic Alert Subvectors</p>
+
+    <style>table thead th { border-bottom: 1px solid #000; width: auto;}
+            table{border-collapse: collapse;
+                
+            }
+            
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Subvector</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+       
+      <tr style="border-bottom: 1px solid #000;">
+          <td>Generic alert data subvector</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alert Type: X'12' (unknown)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alert description code: X'FE00' (undetermined error)</td>
+      </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Probable cause subvector</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Probable cause code point: X'1001' (application program)</td>
+        </tr>
+         <tr style="border-bottom: 1px solid #000;">
+             <td>Cause undetermined<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+subvector</td>
+             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recommended action code point: X'0700' (no action<br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;necessary)</td>
+        </tr>
+        <tr style="border-bottom:1px solid #000;">
+            <td>First product set ID subvector</td>
+            <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product classification: X'xC' (non-IBM software)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software product common name: Identifier of the NMG<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+application (in the non-SNA network) that communicates <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;across the NMG API.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software product common level: 000000<br><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software product program number: USER0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>Note:</b> The first product set ID subvector is included to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+comply with SNA but does not carry significant<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+information.</td>
+        </tr>
+        <tr style="border-bottom:1px solid #000;">
+            <td>Second product set ID<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+subvector</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product classification: X'xC' (non-IBM software)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software product common name: name of the native<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+element manager that receives commands<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software product common level: 000000<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software product program number: USER0<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>Note:</b> The second product set ID subvector is included to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+comply with SNA but does not carry significant<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+information.</td>
+        </tr>
+                <tr style="border-bottom:1px solid #000;">
+                    <td>Date/Time subvector<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(optional)</td>
+                    <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An X'01' subvector containing date and time information.</td>
+        </tr>
+     <tr style="border-bottom:1px solid #000;">
+         <td>Hierarchy resource list<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+subvector</td>
+         <td>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First resource name (mandatory): Name of the service point
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;First resource type identifier (mandatory): X'81' (service
+point)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transaction program resource (optional):<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Transaction program identifier (optional): X'18' (transaction<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+program)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Additional resource name (optional): As required, to<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uniquely identify the domain
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Additional resource type identifier (optional): Any
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> The concatenation of resource names, beginning with
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the service point, with a period (.) as a delimiter between
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;names, needs to be identical to the MyName field of an
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object in the RODM Non_SNA_Domain_Class object.
+         </td>
+        </tr>
+     <tr style="border-bottom:1px solid #000;">
+         <td>Self-defining text message<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+subvector</td>
+         <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text message: INIT[,GMT=chhmm]
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The optional GMT keyword parameter describes the offset
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to Greenwich mean time (GMT) for all alerts and command
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;responses that contain status information. The keyword
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value is formatted as follows:
+            <br> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c is the GMT time modifier code: +, -, or Z.
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li> Specify + to add the GMT modifier to the local time.</li>
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Specify - to subtract the GMT modifier from the local
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;time.</li>
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>Specify Z if the local time is already GMT. In this case
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hhmm is 0000.</li>
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hhmm is the GMT modifier in hours and minutes:
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>For hh, the valid range in 24-hour format is 00—23 .</li>
+             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<li>For mm The valid minute range is, 00—59 .</li>
+         </td>
+    
+        </tr></tbody></table>
+    <h2 style="margin-left: 20px;">Session Termination</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 20 on page 79 shows the alert exchange during session termination</p>
+    <center>
+    <img src="Screenshot%20(19).png">
+        </center>
+    <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> The session termination alert is identical to the alert described in “INIT
+Generic Alert for Session Establishment” on page 77, except that the self-defining
+text message subvector contains the text DOWN</p>
+    <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After GMFHS receives this alert, it considers the session down, and sends no
+commands to the NMG until the session is re-established.</p>
+    <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS also ends the session if it detects a down state for one of the following
+reasons:</p>
+    <li style="margin-left: 30px;">The status of an NMG changes to Unsatisfactory</li>
+    <li style="margin-left: 30px;">An alert reports a status change of the element manager to Unsatisfactory. </li>
+    <li style="margin-left: 30px;">GMFHS receives an INIT alert from the element manager.</li>
+    <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If an INIT alert is received, the session is ended and immediately re-established.</p>
+  <hr style= "border-top:2px solid black">
+    <h2 style="margin-left: 20px;"> Defining Non-SNA Transport Protocols</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The transport protocol definitions control how network control commands are
+transported to their non-SNA resource destinations. Depending on the transport
+protocol you define, you can issue commands at the workstation to control
+non-SNA resources.</p>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The transport protocol field specifies how GMFHS communicates with the network
+management gateway (NMG) when delivering commands and accepting responses
+to commands. The valid protocol names are:</p>
+    <li  style="margin-left: 30px;">COS indicates that the NMG is a service point and that GMFHS use RUNCMD
+commands to communicate with the service point.</li>
+    <li  style="margin-left: 30px;">PPI indicates that the NMG uses a program-to-program interface (PPI) and that
+GMFHS use the PPI to communicate with a system or network management
+transaction program running in another address space on the focal point host
+communicating with the NetView management console.</li>
+    <li  style="margin-left: 30px;">OST specifies that the NMG is the NetView program and that commands are
+delivered to a NetView OST. </li>
+    <li  style="margin-left: 30px;">NONE specifies that this NMG does not accept commands.</li>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note: </b>If the NMG represents a service point, its name must be the SNA name of
+the service point. If the NMG uses the PPI, its name must be the PPI receiver ID
+used by the NMG. If the NMG is an OST, its name can be any 1-to 8-character
+name.</p>
+    <h2  style="margin-left: 20px;">COS Gateway Support</h2>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The NetView common operations services (COS) gateway support uses the
+RUNCMD command to deliver network control commands to, and receive
+command responses from, service points owned by the central site SSCP or remote
+SSCPs on distributed hosts. Because these service points are accessed by the service
+point command service (SPCS) of the NetView program, GMFHS does not directly
+use the communications network management interface (CNMI) of VTAM for this
+communication.</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When you issue a network control command, the transport layer checks the
+network management gateway (NMG) object TransportProtocolName field. If the
+field value is COS, the GMFHS host delivers the command to the GMFHS scope
+checker OPT running in the NetView address space. The scope checker passes the
+command to the GMFHS COS command processor running on a separate autotask.
+The COS command processor saves some context information for the command,
+and creates and issues a RUNCMD command containing the command. The
+responses to the RUNCMD command are received by GMFHS COS command
+processor, are correlated to the outstanding command, and are returned to
+GMFHS. The command list issues the RUNCMD command and obtains responses
+for it. When all responses are available, they are returned to the COS command
+processor. The command processor correlates the responses to the command
+context it retained and returns the responses to GMFHS.</p><br>
+    
+         <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the service point resides in a distributed NetView system, the COS command
+processor routes the command over an LU 6.2 session using the MS transport. The
+NetView program routes the command to the distributed NetView system, runs
+the command on a distributed router autotask, and returns the responses to the
+central site NetView program where they are delivered to the COS command
+processor. The command responses are returned to GMFHS the same way they are
+             returned for responses from a local service point.</p><br>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To use the COS transport protocol, set the value of the TransportProtocolName
+            field to COS in the NMG_Class object for that gateway.</p><br>
+        
+       <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If the NetView program is communicating with a service point using LU 6.2 and
+the service point LU has a different NETID than the NetView program that issues
+the RUNCMD, a bit in the NMGCharacteristics field must specify that the SNA
+           network name be included in the NETID= keyword parameter of the RUNCMD.</p>
+     <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If the NetView program is communicating with a service point using an SSCP-PU
+session and the NetView program that issues the RUNCMD does not own the
+CNMI that communicates with the service point PU, specify the domain name of
+the NetView program that owns the CNMI on the CommandRouteLUName field
+         of the NMG_Class object for the service point.</p>
+     <h2  style="margin-left: 20px;">Program-to-Program Interface Gateway</h2>
+     <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The program-to-program interface (PPI) for gateway transport allows a process in
+an address space other than a GMFHS or NetView address space to receive generic
+and native network commands from GMFHS, and to return command responses.
+To use the PPI transport type, define an NMG object with a
+TransportProtocolName field value of PPI. The MyName field of this NMG object
+must be the PPI receiver name to which GMFHS is to send commands for this
+         gateway.<br>
+    The messages exchanged through the program-to-program interface use the
+execute run major vector and the reply-to-execute major vector, except as follows:<br>
+         <li> If you specified on the DomainCharacteristics field that command responses are
+expected from the native element manager, the execute major vector must
+include a supporting data correlation MS common subvector. The PCID in the
+supporting data correlation subfield contains the command correlator.</li>
+         <li>If GMFHS cannot deliver the execute command, the sense data subvector
+contains the PPI return code that describes why the PPI send request failed.
+Refer to the IBM Tivoli NetView for z/OS Application Programmer's Guide for
+information about PPI return codes.</li>
+    </p><br>
+    <h2 style="margin-left: 20px;">OST/PPT Gateway</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The NetView OST/PPT provides a gateway transport facility that allows network
+control commands to be issued using the NetView operator station task (OST)
+associated with the workstation originating the command, or using the primary
+program operator interface (POI) task (PPT), if there is no associated workstation
+operator. NetView command lists and command processors are initiated in
+response to commands entered by workstation operators. The following
+characteristics are in effect for this gateway:
+    </p>
+    <li style="margin-left: 30px;">Some OST/PPT commands do not produce a command response, even if the
+expect responses bit of the DomainCharacteristics field is on.</li>
+     <li style="margin-left: 30px;"> Command lists or command processors initiated by this gateway can use the
+NetView GENALERT facility to report current or resulting resource status so
+that is reflected in the views. If a command initiated by this facility causes a
+change that otherwise results in an alert being generated for the target resource,
+the use of the GENALERT is not necessary</li>
+    <h2 style="margin-left: 20px;">Monitoring Non-Network Devices</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The NetView program enables you to monitor non-network devices, such as a line
+printer. You can write a command list that issues a GENALERT command that
+generates a generic alert. Define the names of your RODM real resources
+representing non-network devices and your RODM non-SNA domain objects that
+report on these devices, so that they follow the naming conventions used by the
+GENALERT alert resource hierarchy.</p>
+    <h2  style="margin-left: 20px;">Types of NMGs</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS can communicate with three types of NMGs:
+        <li>Common operations services NMGs</li>
+        <li> Operator station task NMGs</li>
+        <li> Program-to-program interface NMGs</li><br>The type of NMG is determined by the TransportProtocol field of the NMG_Class
+object. All domains managed by an NMG must be of the same type.
+    </p>
+     <h2  style="margin-left: 30px;">Common Operations Services NMGs</h2>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS communicates with common operations services (COS) NMGs with the
+NetView RUNCMD command. The network command manager task creates the
+command text according to the presentation and session protocols, then uses the
+COS gateway command processor autotask to issue the RUNCMD command and
+wait for the response. For more information about RUNCMD, see NetView online
+        help.</p>
+    <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COS NMGs provide the following benefits:</p>
+    <li style="margin-left: 30px;"> GMFHS can receive command responses.</li>
+    <li style="margin-left: 30px;">Depending on the presentation protocol, the command responses can contain
+status information that the network command manager task can interpret.</li>
+    <li style="margin-left: 30px;"> Several current service point applications conform to this architecture.</li>
+    <li style="margin-left: 30px;">The responses to operator-initiated commands are displayed in the Non-SNA
+Command Response window.</li><br>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The maximum size of a command to a COS NMG is 240 bytes. If the command
+text length for a presentation or session protocol command exceeds 240 bytes after
+substitution of any command variables, GMFHS rejects the command.</p>
+    <h2  style="margin-left: 30px;">Operator Station Task NMGs</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS communicates with operator station task (OST) NMGs by sending the
+command to the requesting operator's OST, or to the PPT for GMFHS-initiated
+commands. The network command manager task creates the command text
+according to the presentation and session protocols, then uses the host task
+manager OPT message queuing service to send the command to the operator's OST
+or PPT. GMFHS cannot interpret OST command responses, so all status changes
+must be reported to GMFHS as alerts.<br>
+        The maximum size of a command to an OST NMG is 256 bytes. If the command
+text length for a presentation or session protocol command exceeds 256 bytes after
+substitution of any command variables, GMFHS rejects the command.
+    </p>
+    <h2  style="margin-left: 30px;">Program-to-Program Interface NMGs</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS communicates with program-to-program interface NMGs by exchanging
+information with another application registered to the program-to-program
+interface. Commands are formatted within an execute command major vector
+(X'8061'). Command responses are returned in two response major vectors (X'0061'
+and X'1300'). The network command manager task creates the command text
+according to the presentation and session protocols, and sends it across the
+program- to-program interface to the element manager. The element manager
+responds to GMFHS over the program-to-program interface.</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Program-to-program interface NMGs provide the following benefits:<br>
+        <li>GMFHS can receive command responses.</li>
+        <li> Depending on the presentation protocol, the command responses can contain
+status information that the network command manager task can interpret.</li>
+        <li>The responses to operator-initiated commands are displayed in the Non-SNA
+            Command Response window.</li></p>
+     <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The maximum size of a command to a program-to-program interface NMG is 253
+bytes. If the command text length for a presentation or session protocol command
+exceeds 253 bytes after substitution of any command variables, GMFHS rejects the
+         command.</p>
+    <h2  style="margin-left: 30px;">PPI Command Transport Envelope</h2>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The text of GMFHS commands is transported to the program-to-program interface
+NMG in the execute command major vector (X'8061'). This major vector is
+described in the System Network Architecture Formats. However, because GMFHS
+must have a correlator in command responses, and the architecture of the execute
+command major vector does not include a correlator subvector, GMFHS departs
+from the architecture by including a subvector that contains a correlator. This
+        additional correlator is the supporting data correlation subvector (X'48').</p>
+    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 11 shows the subvectors and subfields that are included in the execute
+command major vector.</p>
+    <p style="margin-left: 30px; font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 11. Subvectors and Subfields in the Execute Command Major Vector</p>
+    
+    <style>table thead th { border-bottom: 1px solid #000; width: auto;}
+            table{border-collapse: collapse;
+                
+            }
+            
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Subvector</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfield</th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description</th>
+    </tr>
+    </thead>
+    <tbody>
+       
+      <tr style="border-bottom: 1px solid #000;">
+          <td>Name list</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Destination<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;application name</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Value of TransactionProgram field in<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Non_SNA_Domain_Class object.</td>
+      </tr>
+     <tr style="border-bottom: 1px solid #000;">
+    <td>Self-defining text<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+message</td>
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coded character set<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ID</td>
+         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X'00000037'</td>
+        </tr>
+    <tr style="border-bottom: 1px solid #000;">
+        <td>Self-defining text<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+message</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text message</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Command text created by the presentation<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layer</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Supporting data<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+correlation</td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fully qualified session<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PCID: GMFHS internal correlator<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Network-qualified CP name:
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS.NETCMD
+            </td></tr>
+    </tbody></table>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The command response consists of two major vectors:</p>
+    <li style="margin-left: 30px;">Reply to execute command</li>
+        <li style="margin-left: 30px;">Text data parameter</li><br>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS ignores all subvectors in the reply-to-execute-command major vector; no
+subvectors are required. Table 12 shows the subvectors and subfields of the text
+data parameter major vector.</p>
+        <p style="margin-left: 30px; font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 12. Subvectors and Subfields in the Text Data Parameter Major Vector</p>
+    
+<style>table thead th { border-bottom: 1px solid #000; width: auto;}
+            table{border-collapse: collapse;  
+            }
+            </style>
+<table  style="margin-left: 30px;">
+  <thead>
+    <tr>
+      <th>Subvector</th>
+      <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfield</th>
+        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description</th>
+    </tr>
+    </thead>
+    <tbody>
+       
+      <tr style="border-bottom: 1px solid #000;">
+          <td>Supporting data<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+correlation</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fully qualified session<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PCI</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Must be identical to the subvector in the<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+command 
+            <br> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PCID: GMFHS internal correlator
+              <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Network-qualified CP name:
+              <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS.NETCMD
+          </td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Self-defining text<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message</td>
+          <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Text message</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Command response text</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #000;">
+            <td>Self-defining text<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;message</td>
+            <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Other subfields</td>
+            <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS ignores all other subfields in this<br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subvector.</td>
+        </tr>
+    
+    
+    </tbody></table>
+
+        
+        <div style="width: 890px; height: 5px; background-color: black;"></div>
+        <h1>Chapter 5. How GMFHS Uses RODM</h1>
+        <p >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Graphic Monitor Facility host subsystem (GMFHS) works with RODM and a
+NetView management console to display graphic views of networks and issue
+commands to resources that you select from the view. The views contain both
+status and configuration information about network resources. This chapter
+describes how GMFHS uses RODM. Using this information, you can then modify
+the contents of RODM to change how GMFHS and NetView management console
+perform.</p>
+        <hr style= "border-top:2px solid black">
+        <h2>GMFHS Initialization</h2>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS can be started with either of two options</p>
+        <li>Aggregation warm start</li>
+             <li>Resource status warm start</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default is that the options are not run and GMFHS is started normally.</p>
+        <h2>Aggregation Warm Start</h2>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An aggregation warm start is caused by coding the AGGRST=YES parameter in
+the GMFHS startup procedure, CNMGMFHS. An object-independent method,
+DUIFFAWS, is run to initialize the fields related to status aggregation in the real
+and aggregate objects in the RODM data cache. See “DUIFFAWS: Aggregation
+Warm Start Method” on page 503 for more information.</p>
+        <h2>Resource Status Warm Start</h2>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A resource status warm start is caused by coding the RESWS=YES parameter in
+the GMFHS startup procedure, CNMGMFHS.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resource status warm start provides a mechanism for quickly restoring GMFHS.
+Use the resource status warm start option if GMFHS has been abnormally ended,
+and the status of the resources in RODM that were managed by GMFHS are still
+accurate. GMFHS bypasses the normal resource status initialization process for all
+domain resources and uses the existing status information in RODM instead.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS sets the status of resources on a domain basis. For a resource status warm
+start to occur, a domain must meet one of the following conditions:</p>
+        <li>Status solicitation of resources was completed successfully the last time GMFHS<br>
+was initialized.</li>
+        <li>Status solicitation is not supported.</li>
+        <li> Skip Status solicitation is indicated</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resource status warm start requires current status data in RODM. To ensure the
+current status is maintained in RODM, periodic checkpoints of RODM are required
+to save the current domain and resource values. RODM can then be loaded using
+the data sets containing the previous checkpoint data.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Notes:</b></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. &emsp;All status updates are lost for the period between the last checkpoint of RODM
+ &emsp; &emsp;and when GMFHS was reinitialized.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. &emsp;If GMFHS and RODM are warm started on a backup host, the DASD that
+&emsp;&emsp;contains the checkpoint file must be accessible by the backup host.</p>
+        <h1>GMFHS Initialization Process Overview</h1>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Normal GMFHS initialization has two subprocesses</p>
+        <li>Setup</li>
+        <li>Session Establishment</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These subprocesses determine the initial status of the resources in each non-SNA
+domain. However, under certain circumstances GMFHS does not perform these
+steps; this is determined by the values of the following GMFHS start option and
+RODM fields:</p>
+        <li>GMFHS warm start option (resws=yes|no)</li>
+        <li>The AgentStatus field defined on a NMG_Class object</li>
+        <li>The AgentStatusEffect field defined on a NMG_Class object</li>
+        <li> The DomainCharacteristics field defined on a Non_SNA_Class object</li>
+        <li>The DomainCharacteristics2 field defined on a Non_SNA_Class object</li>
+        <h3>Setup Subprocess</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Resources under each domain are set to initial, or unknown, status except under
+the following conditions:</p>
+        <li>GMFHS is started with the resource status warm start option (resws=yes) and
+the status complete bit is turned on in the DomainCharacteristics2 field.</li>
+        <li> The skip status setup bit of the DomainCharacteristics field is turned <b>on</b>.</li>
+        <h3>Session Establishment Subprocess</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The status of the resources within each domain is solicited if status solicitation is
+supported. For more information about status solicitation, see Chapter 4,
+“Communicating with Network Management Gateways,” on page 59.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS does not perform the session-establishment subprocess for a domain if
+GMFHS is started with the resource status warm-start option (resws=yes), and the
+status complete bit of the DomainCharacteristics2 field is turned on. However, if
+GMFHS is started with the resource status warm start option (resws=yes), and the
+status complete bit of the DomainCharacteristics2 field is turned off, GMFHS
+performs the session-establishment subprocess for the domain.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If status solicitation is not supported for a domain, resource status is set according
+to the following conditions:</p>
+        <li>If the value of the AgentStatusEffect field is X'80' and the status complete bit is
+turned on in the DomainCharacteristics2 field, the status of the resources is not
+changed.</li>
+        <li> If the value of the AgentStatusEffect field is X'80' and the status complete bit is
+turned off in the DomainCharacteristics2 field:<br>
+            – If the value of the AgentStatus field is either 1 or 3, the status of the resources
+is set to the status that is indicated by the value of the InitialResourceStatus
+field.<br>
+            – If the value of the AgentStatus field is either 0 or 2, the status of the resources
+is set to Unknown.
+        </li>
+        <li>If the value of the AgentStatusEffect field is X'00', the status of the resources is
+set to the status that is indicated by the value of the InitialResourceStatus field.</li>
+        <hr style= "border-top:2px solid black">
+        <h2>Monitoring Topology Managers</h2>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS can monitor the status of topology managers and indicate this status to<br>
+operators. Create one object under the Topology_Manager class to represent each
+topology manager. Note that the SNA topology manager automatically creates this
+object for you.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Using fields on the Topology_Manager class object, each manager can specify:</p>
+        <li>Its status</li>
+        <li>The interval within which it must indicate its status before GMFHS assumes it is
+unavailable</li>
+        <li> Its command indicator range</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each manager must periodically update the StatusIndicator field on its object to
+notify GMFHS that it is active. If this field is not updated within the interval
+specified by StatusInterval field, GMFHS reports that the manager is unavailable.
+Topology manager status is displayed in the status area in a NetView management
+console business view, and is summarized on the status bar for open views.</p>
+         <hr style= "border-top:2px solid black">
+        <h1>Building Views</h1>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS builds all views using a 2-step process:</p>
+        <li>Object discovery</li>
+         <li> Object connectivity</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object discovery is the process used to determine the list of objects to display in a
+view. This process varies depending on the type of view that is requested.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Object connectivity is the process used to determine how the objects in the list are
+interconnected in a view. This process is the same for each type of view. See
+“Object Connectivity Process” on page 98 for a description of this process.</p>
+        <h1>Object Discovery Process</h1>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All of the views that GMFHS builds can be classified in two categories:</p>
+        <li>Predefined</li>
+         <li>Dynamically built</li>
+        <h2>Predefined Views</h2>
+<p>Predefined views are represented by a view object in RODM. The view object
+contains links to each resource that are in the view. The only object discovery
+processing needed is to query the list of objects currently linked to the view object.
+Note that objects in exception views are not linked.</p>
+        <h2>Dynamically Built Views</h2>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dynamically built views are not represented by a view object in RODM.
+Dynamically built views are selected by either choosing an object on an open view
+and issuing an action against it or by issuing a Locate Resource request for a
+specific object. In either case, GMFHS receives the request and determines which
+field on the specified object is queried to find the set of objects necessary to build
+    the view. The fields that are queried depend on the type of view.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For some dynamically built views, GMFHS uses a recursive process to determine
+the complete list of objects that are to be displayed in a view. For example, when a
+configuration parent view is requested for an object, GMFHS determines the parent
+            of the object. It then determines whether this parent has a parent. This process is
+repeated until a parent object is found that has no parent. See “Restricting
+Recursive Views” on page 111 for more information. The views that use this
+process are identified in “Object Discovery Process Description for Specific Views”
+            on page 92.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following objects have important roles in the view building process:</p>
+        <li>Display_Resource_Type_Class objects</li>
+         <li>View_Information_Object_Class objects</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following overview describes these objects, and “Object Discovery Process
+Description for Specific Views” on page 92 contains a description of how these
+objects are used for each type of view.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Display_Resource_Type_Class object:</b> A Display_Resource_Type_Class object is
+used to associate an icon with the resource when it is displayed. Displayable
+objects that can be placed in a view must be linked to an object of the
+Display_Resource_Type_Class. Two techniques are available for linking a
+displayable object to the Display_Resource_Type_Class object.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With the first technique, the DUIFCLRT method is run to link the
+DisplayResourceType field of the displayable object to the Resources field of the
+Display_Resource_Type_Class object as shown in Figure 21. The disadvantage of
+this technique is that you have to run the DUIFCLRT method for each object.</p>
+        <center>
+        <img src="Screenshot%20(8)%20-%20Copy.png"  style="width: 550px;">
+        </center>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With the second technique, you can associate a Display_Resource_Type_Class
+object with an object class in RODM as shown in Figure 22 on page 89. This is
+done by creating a View_Information_Reference_Class object, and placing its object
+ID in the ViewInfoRefObjDRT field on the object class. The DisplayResourceType
+field of the View_Information_Reference_Class object is then linked to the
+ResourceClasses field of the Display_Resource_Type_Class object using method
+DUIFCLRT. The View_Information_Reference_Class object is used, because links
+cannot be defined at the class level. The ViewInfoRefObjDRT field is inherited by
+all objects of the class. The advantage to this technique is that the link is defined
+only once at the class level instead of individually for each object.</p>
+        <center>
+        <img src="Screenshot%20(9).png" style="width: 550px;">
+        </center>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> A displayable object can be linked to a Display_Resource_Type_Class object
+using both techniques. When GMFHS encounters this situation, the first technique,
+which is shown in Figure 21 on page 88, is used.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-size: 18px;">View_Information_Object_Class object: </b>GMFHS uses</p>
+        <p>View_Information_Object_Class objects for the following purposes:</p>
+        <li>To determine which fields on an object to query to find all other related objects
+            when building some dynamically built views. </li>
+        <li>To determine how objects in a view are connected. See “Object Connectivity
+Process” on page 98 for more information.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For both purposes, however, GMFHS uses a common technique to determine
+which View_Information_Object_Class object to use. There is one
+View_Information_Object_Class object for every resource-type and view-type pair
+that GMFHS defines. All resource types ultimately point to the
+View_Information_Object_Class objects that represent in which types of views they
+can be displayed in.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All view types ultimately point to the View_Information_Object_Class objects that
+represent the resource types that can be displayed in a particular type of view. For
+each object-type and view-type pair, there is only one valid
+View_Information_Object_Class object to represent the combination. The two
+techniques that can be used to determine the View_Information_Object_Class
+object<span style="background-color: black;color: white;">A</span> , for a resource are illustrated in Figure 23 on page 90 and in Figure 24
+on page 91.</p>
+        <img src="Screenshot%20(10).png"style="width: 550px;">
+        <br><br><br>
+        <center>
+        <img src="Screenshot%20(11).png"style="width: 550px;">
+        </center>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A displayable object can specify a View_Information_Object_Class object using
+both the DisplayResourceType field (as shown in Figure 23 on page 90) and the
+ViewInfoRefObjVIO field (as shown in Figure 24). When GMFHS encounters this
+situation, it uses the View_Information_Object_Class object pointed to by the
+ViewInfoRefObjVIO field.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Either of two scenarios can occur where GMFHS cannot find a valid
+View_Information_Object_Class object for a displayable object:</p>
+        <li>A View_Information_Object_Class object is not found when an operator selects a
+view type that is not defined for a resource object, called the root object. In this
+case, GMFHS displays a message stating that the view type is not enabled for
+this type of object.</li>
+        <li>If an object other than a root object is to be in a view but GMFHS cannot find its
+View_Information_Object_Class object, GMFHS omits the object and builds the
+view. Prior to NetView Version 3, if GMFHS cannot find a
+View_Information_Object_Class object for a resource object, it cannot build the
+view.</li>
+        <h3>Object Discovery Process Description for Specific Views</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This section describes how GMFHS determines which objects to include in a view.Network and exception views are opened by selecting them from the NMC tree
+view. All other types of views are opened by selecting an object rather than a view
+name.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following information is provided for each view: </p>
+            <li>Whether the view is predefined or dynamically built. Note that some views can
+be either predefined or dynamically built. <li>A high level description of the logic that GMFHS uses to discover all of the
+        objects.</li> 
+        <li>The fields that are used by the object discovery process.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Network Views:</b> Network views are predefined views. Each view is represented
+by a Network_View_Class object in RODM. Every object under this class is queried
+when the NetView management console server establishes a session with GMFHS,
+and is displayed in the NMC tree view. Whenever you add or delete network
+views, this list of views is automatically refreshed. The name of the view that is
+displayed in the list is the value of the MyName field of the Network_View_Class
+object.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When a network view is opened, the request is passed to GMFHS. GMFHS queries
+the ContainsObjects field of the Network_View_Class object. The list of objects that
+is returned is used by the GMFHS connectivity process. See “Object Connectivity
+Process” on page 98 for a description of this process.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Configuration Peer Views: </b>Configuration peer views are predefined views. Each
+view is represented by a Configuration_Peer_View_Class object in RODM.
+Configuration peer views are similar to network views, but there are two
+significant differences:</p>
+        <li>gnificant differences: v Configuration views are not available in the NMC tree view. </li>
+            <li>A configuration view is called by object, not by name.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When a configuration peer view is opened, the request is passed to GMFHS.<br>
+GMFHS queries the ContainedInView field on the selected resource object. This
+field points to every predefined view to which this resource is currently defined.
+For each of these view objects, GMFHS determines its view type by finding the
+class on which the object was created. For each Configuration_Peer_View_Class
+object, GMFHS queries the ContainsObjects field on the specified view object to get
+the list of objects that are to be placed in the view. The list of objects that is
+returned is used by the GMFHS connectivity process. See “Object Connectivity
+Process” on page 98 for a description of this process.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>NMC Locate Failing Resources Views:</b> NMC locate failing resources views are
+dynamically built views which are requested by selecting an aggregate object in an
+open view and requesting an NMC locate failing resources view.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When an NMC locate failing resources view is opened, NetView management
+console passes the request to GMFHS. GMFHS queries the AggregationChild field
+of the selected aggregate object to get a list of all aggregate children objects and
+real children objects of the aggregate object. For each aggregate child object,
+GMFHS queries the AggregationChild field of that object to get its children objects.
+This process is repeated until GMFHS has the complete list of all real objects under
+the original aggregate.<br>
+            GMFHS removes all aggregate objects from the list and real objects that meet any
+of the following criteria:
+        </p>
+        <li>Does not map to an exception state (ResourceTraits contains NOXCPT).</li>
+        <li>v Has a UserStatus that indicates the object is suspended from aggregation<br>
+(UserStatus bit 0x40 is on).</li>
+        <li>Has an AggregationPriorityValue that indicates aggregation is not in use<br>
+(AggregationPriorityValue = -1).</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A list of objects that do not meet any of these criteria is passed to the GMFHS
+connectivity process. See “Object Connectivity Process” on page 98 for a
+description of this process.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Customizing Fast Path to Failing Resource Views:</span>You can determine which objects
+appear in an NMC locate failing resources view by customizing how the
+DisplayStatus of an object maps to the exception state of an object. See “Defining
+Exception View Objects and Criteria” on page 98 for more information about
+mapping display status to exception state.</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>Configuration Children Views:</b> The configuration children view is a dynamically
+built view which is requested by selecting an object in an open view and selecting
+a configuration children view. This view shows the operator all children defined to
+the selected object. To find the children objects of the selected object, GMFHS uses
+the following process:</p> 
+        <li>Find the View_Information_Object_Class object. </li>
+        <li>Query the RelFieldNamesA field of the View_Information_Object_Class object.
+For the base GMFHS data model, this field specifies the ChildAccess field. Note
+that the RelFieldNamesA field is user modifiable and can contain other values.</li>
+        <li>The ChildAccess field contains a pointer to all objects that are children of the
+object.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is repeated for each child object of the selected object until the
+complete list of children is identified. The list of objects is passed to the GMFHS
+connectivity process. See “Object Connectivity Process” on page 98 for a
+description of this process.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Configuration Parent Views:</b> The configuration parent view is a dynamically
+built view which is requested by selecting an object from an open view and
+selecting a configuration parent view. This view shows the selected object,
+connection to intermediate parents, and connection to the ultimate parent of the
+selected object. To find the parent objects of the selected object, GMFHS uses the
+following process:</p>
+        <li>Find the View_Information_Object_Class object.</li>
+        <li> Query the RelFieldNamesA field of the View_Information_Object_Class object.
+For the base GMFHS data model, this field specifies the ParentAccess field. Note
+that the RelFieldNamesA field is user modifiable, and can contain other values.</li>
+        <li>The ParentAccess field contains a pointer to all objects that are parent objects of
+the selected object.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is repeated for each parent object of the selected object until the
+complete list of parent objects is identified. The list of objects is passed to the
+GMFHS connectivity process. See “Object Connectivity Process” on page 98 for a
+description of this process.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Configuration Logical Views:</b> The configuration logical view is requested by
+selecting an object in an open view and then selecting a configuration logical view.
+            This view shows the selected object and all resource objects that are logically
+connected to it. Configuration logical views can be dynamically built or
+predefined.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For dynamically built configuration logical views, GMFHS uses the following
+process to find the objects that are logically connected to the selected object:</p>
+        <li> Find the View_Information_Object_Class object</li>
+        <li> Query the following fields for the base GMFHS data model: <br>
+            – RelFieldNamesA, which specifies the LogicalConnUpstream field<br>
+– RelFieldNamesB, which specifies the LogicalConnDownstream field<br>
+– RelFieldNamesAB, which specifies the LogicalConnPP field.<br>
+            Note that the RelFieldNamesA, RelFieldNamesB, and RelFieldNamesAB fields
+are user modifiable and can contain other values. </li>
+        <li> These fields contain pointers to the objects that are logically connected to the
+selected object.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is repeated for each resource object that is logically connected to the
+selected object until the complete list of objects is identified.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For predefined configuration logical views, the request is passed to GMFHS.
+GMFHS queries the ContainedInView field on the selected resource object. This
+field points to every predefined view to which this resource is currently defined.
+For each of these view objects, GMFHS determines its view type by finding the
+class on which the object was created. For each Configuration_Logical_View_Class
+object, GMFHS queries the ContainsObjects field on the specified view object to get
+the list of objects that are to be placed in the view.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For both dynamically built and predefined configuration logical views, the list of
+objects is passed to the GMFHS connectivity process. See “Object Connectivity
+Process” on page 98 for a description of this process.</p>
+        <p><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuration Physical Views:</b> The configuration physical view is requested by<br>
+selecting an object from an open view and then selecting a configuration physical
+view. This view shows the selected object, and all resource objects that are
+physically connected to it. Configuration physical views can be dynamically built
+or predefined.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For dynamically built configuration physical views, GMFHS uses the following
+            process to find the objects that are physically connected to the selected object:</p>
+        <li>Find the View_Information_Object_Class object.</li>
+        <li>v Query the following fields for the base GMFHS data model:<br>
+ – RelFieldNamesA, which specifies the PhysicalConnUpstream field<br>
+– RelFieldNamesB, which specifies the PhysicalConnDownstream field<br>
+– RelFieldNamesAB, which specifies the PhysicalConnPP field<br>
+Note that the RelFieldNamesA, RelFieldNamesB, and RelFieldNamesAB fields
+are user modifiable and can contain other values.</li>
+        <li>v These fields contain pointers to the objects that are physically connected to the
+selected object.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is repeated for each resource object that is physically connected to the
+selected object until the complete list of objects is identified.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For predefined configuration physical views, the request is passed to GMFHS.
+GMFHS queries the ContainedInView field on the selected resource object. This
+field points to every predefined view to which this resource is currently defined.
+For each of these view objects, GMFHS determines its view type by finding the
+class on which the object was created. For each Configuration_Physical_View_Class
+object, GMFHS queries the ContainsObjects field on the specified view object to get
+the list of objects that are to be placed in the view.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For both dynamically built and predefined configuration physical views, the list of
+objects is passed to the GMFHS connectivity process. See “Object Connectivity
+Process” on page 98 for a description of this process.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Configuration Backbone Views:</b> The configuration backbone view is requested by
+selecting an object from an open view and selecting a configuration backbone view. 
+ This view shows the subarea backbone. Configuration backbone views can be
+dynamically built or predefined.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For dynamically built configuration backbone views, GMFHS uses the following
+process to find the backbone objects that are related to the selected object:</p>
+        <li>v Find the View_Information_Object_Class object.</li>
+        <li>v Query the RelFieldNamesA field of the View_Information_Object_Class object.
+For the base GMFHS data model, this field specifies the BackboneConnPP field.
+Note that the RelFieldNamesA field is user modifiable and can contain other
+values.</li>
+        <li>The BackboneConnPP field contains a pointer to all objects that are part of the
+SNA backbone</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is repeated for each backbone object that is related to the selected
+object until the complete list of backbone objects is identified.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For predefined configuration backbone views, the request is passed to GMFHS.
+GMFHS queries the ContainedInView field on the selected resource object. This
+field points to every predefined view to which this resource is currently defined.
+For each of these view objects, GMFHS determines its view type by finding the
+class on which the object was created. For each
+Configuration_Backbone_View_Class object, GMFHS queries the ContainsObjects
+field on the specified view object to get the list of objects that are to be placed in
+the view. </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For both dynamically built and predefined configuration backbone views, the list
+of objects is passed to the GMFHS connectivity process. See “Object Connectivity
+Process” on page 98 for a description of this process.</p>
+        <p><b>More Detail Views:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; More detail views display the next lower layer of child
+resources for the selected object. There are four types of more detail views:</p>
+        <li>v More detail logical</li> 
+        <li>More detail physical </li>
+        <li> Configuration child II<li>
+        <li>Configuration child III</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;One or more of these views can be displayed for the selected resource depending
+on its resource type.</p>
+        <p>If any of these views yield a view with no objects, the view is not returned to the
+workstation. If no views can be built, a message is displayed at the workstation
+saying the view cannot be found.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following topics describe how GMFHS builds the four types of more detail
+views.</p>
+        <p><bold style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More Detail Logical: </bold>A more detail logical view can be dynamically built or
+predefined. When a more detail logical view is opened, the request is passed to
+GMFHS. To determine which objects are in the view, GMFHS performs the
+following actions:</p>
+        
+        <li>Query the ContainsLogical field of the selected object to find the name of the
+field that is queried to get the list of objects. For the base GMFHS data model,
+this field specifies the ComposedOfLogical field. The ComposedOfLogical field
+contains the list of objects that make up the next lower layer of the selected
+object. </li>
+        <li>v Pass the list of objects to the GMFHS connectivity process. See “Object<br>
+Connectivity Process” on page 98 for a description of this process.</li>
+        <p><bold style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More Detail Physical: </bold>A more detail physical view can be dynamically built or
+predefined. When a more detail physical view is opened, the request is passed to
+GMFHS. To determine which objects are in the view, GMFHS performs the
+following actions:</p>
+        <li>v Query the ContainsPhysical field of the selected object to find the name of the
+field that is queried to get the list of objects. For the base GMFHS data model,
+this field specifies the ComposedOfPhysical field. The ComposedOfPhysical field
+contains the list of objects that make up the next lower layer of the selected
+object.<br>
+            Pass the list of objects to the GMFHS connectivity process. See “Object
+Connectivity Process” on page 98 for a description of this process.
+        </li>
+        <p><bold style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuration Child II View:</bold> A configuration child II view is a dynamically built
+view, which shows a subset of the children defined to the selected logical unit
+object. To find the subset of children of the selected object, GMFHS uses the
+following process:</p>
+        <li>v Find the View_Information_Object_Class object.</li>
+        <li>Query the RelFieldNamesA field of the View_Information_Object_Class object.
+This field specifies the list of fields to query to determine the list of the
+first-level children.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is repeated for each child object of the selected object until the
+complete list of children objects is identified. The list of objects is passed to the
+GMFHS connectivity process. See “Object Connectivity Process” on page 98 for a
+description of this process.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If one or more of the fields specified by the RelFieldNamesA field is present on the
+selected object, the view is displayed even if there are no children. In this case,
+only the selected object is displayed. This view is displayed with a radial layout
+with the selected object as the root node.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following SNA topology manager resource classes use this view type to
+display the LU-type objects attached to the selected object:</p>
+        <li> appnEN</li>
+         <li>appnNN</li>
+        <li> crossDomainResource</li>
+        <li>interchangeNode</li>
+        <li>logicalLink</li>
+        <li>logicalUnit</li>
+        <li> luGroup</li>
+        <li>migrationDataHost</li>
+        <li>snaNode</li>
+        <li> t5Node`</li>
+        <p><bold style="font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuration Child III View:</bold> A configuration child III view is a dynamically built
+view, which shows a subset of the children defined to the selected definition group
+object. To find the subset of children of the selected object, GMFHS uses the
+following process:</p>
+        <li>v Find the View_Information_Object_Class object.</li>
+        <li>Query the RelFieldNamesA field of the View_Information_Object_Class object.<br>
+This field specifies the list of fields to query to determine the list of the<br>
+first-level children.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This process is repeated for each child object of the selected object until the
+complete list of children objects is identified. The list of objects is passed to the
+GMFHS connectivity process. See “Object Connectivity Process” on page 98 for a
+description of this process.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If one or more of the fields specified by the RelFieldNamesA field is present on the
+selected object, the view is displayed even if there are no children. In this case,
+only the selected object is displayed. This view is displayed with a hierarchical
+layout with the selected object as the root node.</p><br>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following SNA topology manager resource classes use this view type to
+display the definition group objects attached to the selected object:</p>
+        <li>t5Node</li>
+        <li>interchangeNode</li>
+        <li>migrationDataHost</li>
+        <li>appnEN</li>
+        <li> appnNN</li>
+        <li>definitionGroup</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Exception Views:</b> Exception views are predefined views. Each view is represented
+by an object created on the Exception_View_Class in RODM. Every object in this
+class is queried when the NetView management console graphic data server or
+NetView management console server establishes a session with GMFHS, and is
+displayed in the NMC tree view. When you add or delete an exception view, this
+list of views is automatically refreshed. The view name displayed is the value of
+the MyName field of the Exception_View_Class object.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The object discovery process for exception views is different from other predefined
+views because the view object does not contain links to each resource in the view.<br> 
+            For exception views, object discovery is accomplished by defining a list of
+candidate objects that can be in an exception view and a series of filters that is
+constantly applied to that list. These filters reduce the list to include only those
+objects that you want to be displayed in the exception view. For example, you can<br>
+            define all of your NCPs to an exception view, and set it up so that the only ones
+displayed in the view are the ones having problems that need attention.
+        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When an exception view is opened, the request is passed to GMFHS, which
+determines the list of candidate objects. The list of candidate objects is found by
+first querying the ExceptionViewName field of the Exception_View_Class object.
+Then GMFHS issues a locate request for the value of that field against the
+ExceptionViewList field in RODM. All objects that are defined as candidates are
+returned with this locate request.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ExceptionViewFilter field of the Exception_View_Class object contains the<
+filters used to reduce this list. For example, using these filters you can filter out
+objects that are currently suspended or marked, or objects whose status is not
+considered a problem. This yields a list of resources that are in a problem state.
+The list of objects, even if empty, is then passed to the NetView management
+console to be displayed.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GMFHS keeps all open exception views current. This is done by determining
+whether views specified in the ExceptionViewList of the resource are open. After
+comparing the filter for each view to the resource, GMFHS determines if the
+resource is either added to, or deleted from, an open exception view.</p>
+        <h3 >Object Connectivity Proces</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After the object determination process has determined the list of objects that are in
+a view, the list is passed to the object connectivity process. GMFHS must now
+determine how the objects that are listed are interconnected in the view. GMFHS
+does this by performing the following process, sequentially, for each object listed.
+For each object, GMFHS performs the following actions:</p>
+        <li>Find the View_Information_Object_Class object.</li>
+        <li>Query the RelFieldNamesx field. This field specifies which fields are queried on
+the object.</li>
+        <li>Query those fields on the object.</li>
+        <li>Compares the object list returned by the query request to the initial object list
+that was passed to the connectivity process. All objects that are contained in
+both lists are connected.</li>
+        <li>Pass the view to the NetView management console.</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Notes:</b></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. &emsp;For exception views, GMFHS does not use this process. All objects are
+displayed in a grid, and there is no connectivity relationship among these
+objects.<br>
+            2. &emsp;If GMFHS determines that a node is connected to another node, it inserts a null
+connector link between the two nodes<br>
+            3.  &emsp;If a link does not have real nodes as end points, GMFHS inserts null connector
+nodes.
+        </p>
+        <h3>Defining Exception View Objects and Criteria</h3>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To define an exception view complete the following tasks:<br>
+            1. &emsp; Create an exception view object and define the criteria for what is considered
+an exception. This step provides the filters that are applied to the exception
+view candidate list, which ultimately defines the object to be displayed in a
+view. <br>
+            2.&emsp; Define the objects in RODM that are candidates for exception views.
+        </p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;All exception views are defined on the NetView host; you cannot customize these
+views from the NetView management console.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sample DUIFDEXV, Define Exception Views, provides examples for creating four
+exception view objects and setting two ExceptionViewList values for both the
+GMFHS_Managed_Real_Objects_Class and the GMFHS_Aggregate_Objects_Class.
+The prologue of sample DUIFDEXV contains information about how to define an
+exception view for GMFHS objects.</p>
+        <h3>Defining Exception Criteria</h3>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Defining Exception Criteria
+You can define what constitutes an exception for any given exception view and
+resource, thus determining when an object is placed in an exception view. The<br>
+following fields are used to determine when a resource is displayed in an<br>
+exception view:</p>
+        <li> The value of the UserStatus field of the object</li>
+        <li>The value of the DisplayStatus field of the object</li>
+        <li> The value of the ResourceTraits field of the object</li>
+        <li>v The ExceptionViewFilter field of the Exception_View_Class object</li>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The UserStatus field of an object can be used to specify whether an object is
+displayed in an exception view based on an operator entry or an automation
+program. For example, operators can mark the objects on which they are working,
+and you can choose to exclude the marked objects from exception views. Or, if
+your automation routine is trying to recover a failed resource, the automation
+routine can set the automation-in-progress bit of the object, and you can choose to
+exclude these objects from exception views. Use the ExceptionViewFilter to
+customize the processing of these UserStatus values for each exception view.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The DisplayStatus field of an object contains the basic status information used to
+decide whether an object is placed in an exception view. For example, if the
+DisplayStatus value is 129 (satisfactory), you probably do not want to display the
+object in an exception view. If the DisplayStatus value changes to 130
+(unsatisfactory), you probably do want to display the object. However, you might
+want to display some objects with a DisplayStatus value of 132 (unknown) but not
+display others.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The NetView program supplies a sample table, DUIFSMT, that maps the<br>
+DisplayStatus of objects and classes to exceptions or non-exceptions. This mapping
+is referred to as the exception state of an object.</p>
+    <center>
+        <img src="Screenshot%20(17).png">
+    </center>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can customize how the DisplayStatus is interpreted by modifying the
+DUIFSMT table. See “Customizing the DisplayStatus Mapping Table for Exception
+Views” on page 102 for more information.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You can also create a RODM user method, so that you can access RODM data and
+override the table. See “Creating a DisplayStatus Method for Exception Views” on
+page 109 for more information.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> The exception state of an object is one of the criteria used to determine
+which real objects are included in an NMC Locate Failing Resources view. Only
+real objects that map to an exception state are included in an NMC Locate Failing
+Resources view. See “NMC Locate Failing Resources Views” on page 92 for more
+information.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ResourceTraits field of an object contains the value of how DisplayStatus has
+been interpreted and the state of all UserStatus bits. The ResourceTraits field of an
+object is used when an exception view is built to determine when an object meets
+the criteria for inclusion in an exception view.</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ExceptionViewFilter field of an object is defined on all objects of the
+Exception_View_Class. This field defines the state an object must be in to be
+displayed in an exception view. The value of the ExceptionViewFilter field is
+compared to the values for the DisplayStatus and UserStatus fields of the resource
+object as reflected in the ResourceTraits field. If the values of the
+ExceptionViewFilter field and ResourceTraits field match, the object is considered
+an exception and is placed in the defined exception view. See “Defining the
+ExceptionViewFilter Field” on page 101 for a complete description of
+ExceptionViewFilter customization.</p>
+    </body>
+</html>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
