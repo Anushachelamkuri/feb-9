@@ -9,25 +9,25 @@
         <div>
         </div>
         <p style="text-align: right;">(51-100)pages</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ComposedOfPhysical, or the RelFieldNamesA field of the original object you
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;ComposedOfPhysical, or the RelFieldNamesA field of the original object you
 specified in Step 1 on page 49 to appear in the more detail view. For this example, define layout parameters for the object <span style="background-color: black;color: white;">E</span> <br>
 LANMGR.10005A89A267 of the GMFHS_Managed_Real_Objects_Class.</p>
-        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. Create an object of the Layout_Parameters_For_Object_Class to represent the
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;2. Create an object of the Layout_Parameters_For_Object_Class to represent the
 layout parameters for the object when it is in a particular view. The following is part of the RODM load function statement (not in the
 DUIFSNET sample) that creates this object <span style="background-color: black;color: white;">D</span> , shown in Figure 15 on page
             53:<br></p>
-<p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREATE INVOKER ::= 0000004;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBJCLASS ::= Layout_Parameters_For_Object_Class;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBJINST ::= Detail_Layout_LANMGR.10005A89A267;</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. Link the Object field of the Layout_Parameters_For_Object_Class object you
+<p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;CREATE INVOKER ::= 0000004;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;OBJCLASS ::= Layout_Parameters_For_Object_Class;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OBJINST ::= Detail_Layout_LANMGR.10005A89A267;</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;3. Link the Object field of the Layout_Parameters_For_Object_Class object you
 created in Step 2 to the DetailLayoutParmList field of the object represented.In this example, link the Object field of the In this example, link the Object field of the
 Detail_Layout_LANMGR.10005A89A267 object <span style="background-color: black;color: white;">D</span>  to the
 DetailLayoutParmList field of the object <span style="background-color: black;color: white;">E</span> LANMGR.10005A89A267. The
 following is part of the RODM load function statement that creates this link,
 shown as<span style="background-color: black;color: white;">3</span> in Figure 15 on page 53:<br></p>
-          <p style="font-size: 12px; margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Object ::= (OBJECTLINKLIST) (’GMFHS_Managed_Real_Objects_Class’.<br>
+          <p style="font-size: 12px; margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Object ::= (OBJECTLINKLIST) (’GMFHS_Managed_Real_Objects_Class’.<br>
 ’Detail_Layout_LANMGR.10005A89A267’.’DetailLayoutParmList’),</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Specify the view that these layout parameters apply to:<br>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;4. Specify the view that these layout parameters apply to:<br>
 a. Link the SelectedResource field of the Layout_Parameters_For_Object_Class
 object to the DetailLayoutParmListForSelectedResource field on the object
 which is selected to generate this more detail view (the object selected in 1
@@ -37,10 +37,10 @@ Detail_Layout_LANMGR.10005A89A267 to the
 DetailLayoutParmListForSelectedResource field of object <span style="background-color: black;color: white;">A</span>  TRLAN. The
 following is part of the RODM load function statement that creates this link,
 shown as <span style="background-color: black;color: white;">4</span>  in Figure 15 on page 53:<br></p>
-<p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SelectedResource ::= (OBJECTLINKLIST)<br>
+<p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SelectedResource ::= (OBJECTLINKLIST)<br>
 (’GMFHS_Aggregate_Objects_Class’.<br>
 ’TRLAN’.’DetailLayoutParmListForSelectedResource’),</p>
-        <p style="margin-left: 30px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. Specify which more detail view type these layout parameters apply to. You
+        <p style="margin-left: 30px; ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. Specify which more detail view type these layout parameters apply to. You
 specify the view type by linking the ViewClass field of this object (<span style="background-color: black;color: white;">D</span> ) to
 the DetailLayoutParmList field of an object (<span style="background-color: black;color: white;">C</span> ) in the
 View_Information_Reference_Class that represents the view type:</p>
@@ -50,32 +50,32 @@ View_Information_Reference_Class that represents the view type:</p>
             <li style="margin-left: 30px; "> Configuration_Children_II_View_Reference</li>
 <li style="margin-left: 30px; ">Configuration_Children_III_View_Reference</li>
         
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following is part of the RODM load function statement that creates the
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;The following is part of the RODM load function statement that creates the
 link specifying the more detail physical view, shown as <span style="background-color: black;color: white;">5</span> in Figure 15 on
             page 53:</p>
-       <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ViewClass ::= (OBJECTLINKLIST)<br>
+       <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp; ViewClass ::= (OBJECTLINKLIST)<br>
 (’View_Information_Reference_Class’.<br>
 ’More_Detail_Physical_View_Reference’.<br>
 ’DetailLayoutParmList’),</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Specify the layout parameters for the object. Table 2 on page 47 lists the
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;5. Specify the layout parameters for the object. Table 2 on page 47 lists the
 optional and required layout parameters for each layout algorithm.
 For this example, the radial layout for token ring algorithm is used. Table 2 on
 page 47 shows that the LayoutSequence field is the only optional parameter</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you can specify. Specify a value of 3 for the LayoutSequence field of this object
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;you can specify. Specify a value of 3 for the LayoutSequence field of this object
 (<span style="background-color: black;color: white;">D</span> ). The following is part of the RODM load function statement that sets the
             value of the LayoutSequence field:</p>
-<p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LayoutSequence ::= (INTEGER) 3</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. If you want to use this same Layout_Parameters_For_Object_Class object for
+<p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;LayoutSequence ::= (INTEGER) 3</p>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;6. If you want to use this same Layout_Parameters_For_Object_Class object for
 additional objects or views, create additional links. All of the link fields accept
 multiple values.</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For example, use this same object to define the layout parameters for object
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp; For example, use this same object to define the layout parameters for object
 LANMGR.10005A89A267 when it is in the more detail physical view generated
 when an object of the GMFHS_Aggregate_Objects_Class named OTHER_AGG
 is selected (OTHER_AGG is not part of the sample network). Create a link from
 the SelectedResource field of object Detail_Layout_LANMGR.10005A89A267 to
 the DetailLayoutParmListForSelectedResource field of object OTHER_AGG. The
 following is a RODM load function primitive statement that creates this link:</p>
-        <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OP ’Layout_Parameters_For_Object_Class’.<br>
+        <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;OP ’Layout_Parameters_For_Object_Class’.<br>
 &emsp;&emsp;’Detail_Layout_LANMGR.10005A89A267’.’SelectedResource’<br>
 IS_LINKED_TO ’GMFHS_Aggregate_Objects_Class’.’TRLAN’.<br>
 &emsp;&emsp;’DetailLayoutParmListForSelectedResource’;</p>
@@ -84,18 +84,18 @@ IS_LINKED_TO ’GMFHS_Aggregate_Objects_Class’.’TRLAN’.<br>
         <center>
         <img src="Screenshot%20(3).png" style="align-items: center;">
             </center>
-        <p style="margin-left: 30px; font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 15. Defining Layout Parameters for Objects in More Detail Views</p>
+        <p style="margin-left: 30px; font-style: italic;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Figure 15. Defining Layout Parameters for Objects in More Detail Views</p>
         
         <h3 style="margin-left: 40px;" >Putting It All Together</h3>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;After you have defined the objects that represent your configurations and
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;After you have defined the objects that represent your configurations and
 networks, load them into RODM using the RODM load function. Chapter 3,
 “Loading the GMFHS Data Model,” on page 55 contains directions for doing this.</p>
-        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;You need to load the class definition before you load the definitions of the object
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;You need to load the class definition before you load the definitions of the object
 of that class. By the same token, you need to define objects that are to be linked
         before you can actually link them. Use the load function statements in sample
 member DUIFSNET as an example of the order to follow. The objects and links in
 the sample network are arranged for loading in the following order:</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
             1. SNA_Domain_Class objects<br>
 2. GMFHS_Shadow_Objects_Class objects<br>
 3. NMG_Class objects<br>
@@ -108,7 +108,7 @@ the sample network are arranged for loading in the following order:</p>
              <li style="margin-left: 50px;">Physical links</li>
              <li style="margin-left: 50px;"> Parent/Child links</li>
         </p>
-                    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+                    <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
                         8. Exception_View_Class objects<br>
 9. Network_View_Class objects<br>
 10. Configuration_Peer_View_Class objects<br>
@@ -116,32 +116,33 @@ the sample network are arranged for loading in the following order:</p>
 12. Layout_Parameters_For_Object_Class objects<br>
              
         </p>
-        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> Although the sample network defined in sample load file DUIFSNET does
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> Although the sample network defined in sample load file DUIFSNET does
 not include an exception view, it is included in the preceding list in the position
 that it must be loaded.</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Study the network in the sample load file DUIFSNET carefully before defining
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;Study the network in the sample load file DUIFSNET carefully before defining
 your own network. For information about RODM load function syntax, see
 Chapter 10, “Using the RODM Load Function,” on page 239.</p>
+        <br>
         <div style="width: 890px; height: 5px; background-color: black;"></div>
         <h2  style="margin-left: 40px;">Chapter 3. Loading the GMFHS Data Model</h2>
-        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This chapter describes how to load the GMFHS and SNA topology manager data
+        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;This chapter describes how to load the GMFHS and SNA topology manager data
 models, your network definition, and methods into RODM. This chapter also
 describes how to make additions, changes, or deletions to objects when GMFHS is
 active.</p>
-        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The GMFHS class structure is provided in RODM load function input file,
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;The GMFHS class structure is provided in RODM load function input file,
 DUIFSTRC, which is shipped with the NetView program.</p>
-        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The class structure for the SNA topology manager is provided in RODM load
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;The class structure for the SNA topology manager is provided in RODM load
 function input files, FLBTRDMx, which is also shipped with the NetView program.
 For more information about the FLBTRDMx load function input files, refer to IBM
 Tivoli NetView for z/OS Installation: Configuring Graphical Components.</p>
-        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DUIFSTRC and all the FLBTRDMx input files are loaded using sample CNMSJH12.
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;DUIFSTRC and all the FLBTRDMx input files are loaded using sample CNMSJH12.
 Both the DUIFSTRC and all of the FLBTRDMx input files must be loaded for
 GMFHS operation. Note that input file DUIFSTRC must be loaded before any
 FLBTRDMx input files are loaded. This is the order specified in sample CNMSJH12
 and it must not be changed.</p>
         <hr style= "border-top:2px solid black">
         <h3  style="margin-left: 40px;">Loading the Data Models and Network Definitions</h3>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With RODM running, use sample CNMSJH12 to load the GMFHS data model and
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;With RODM running, use sample CNMSJH12 to load the GMFHS data model and
 your network definition.<br>
             1. Create RODM statements to define your non-SNA network. See Chapter 2,
 “Defining Your Network to GMFHS,” on page 15 for information about how to
@@ -153,14 +154,14 @@ b. Enter the names of the RODM load files that were created in Step 1 into the
 EKGIN1 DD statement on the last line of the sample. For example, if your
 object definitions are in the data set NETVIEW.MYDEFS(OBJECTS), the last
 line of CNMSJH12 is:<br> </p>
-        <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// DD DSN=NETVIEW.MYDEFS(OBJECTS),DISP=SHR</p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c. Replace RODMNAME with the name of your RODM in the EXEC statement.<br>
+        <p style="font-size: 12px; margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;// DD DSN=NETVIEW.MYDEFS(OBJECTS),DISP=SHR</p>
+        <p style="margin-left: 30px;">c. Replace RODMNAME with the name of your RODM in the EXEC statement.<br>
 3. Ensure that RODM is running.<br>
 4. Start CNMSJH12.<br>
             5. Start GMFHS.<br></p>
         <hr style= "border-top:2px solid black">
         <h3  style="margin-left: 40px;">Changing Network Definitions When GMFHS Is Running</h3>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;
             If GMFHS is running when non-SNA objects are to be added, changed, or deleted
 in the RODM data cache, the GMFHS CONFIG command might be required. The
 GMFHS CONFIG command identifies, to GMFHS, the scope of the changes and
@@ -168,7 +169,7 @@ GMFHS CONFIG command identifies, to GMFHS, the scope of the changes and
             Subarea resources that are managed by SNA topology manager can be changed
 anytime without using the GMFHS CONFIG commands.
         </p>
-        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b>
+        <p style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b>
 1. NMGs and domains can be added dynamically without using the GMFHS
 CONFIG command. See “Adding NMGs and Domains When GMFHS Is
 Active” on page 58 for more information.<br>
@@ -179,7 +180,7 @@ command is issued and completes.<br>
 field and class you are changing:
         </p>
         <h4 style="margin-left: 30px;">DOMAIN</h4>
-          <p style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <p style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;
         Used when the changes include changing the association of
 GMFHS_Managed_Real_Objects_Class objects with
 Non_SNA_Domain_Class objects, but do not include changes that require
@@ -187,10 +188,10 @@ that the GMFHS CONFIG NETWORK command be used. See the NetView
 online help for details on the behavior of the CONFIG DOMAIN
         </p>
         <h4 style="margin-left: 30px;">NETWORK</h4>
-         <p style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used only when the changes being made include changes to information
+         <p style="margin-left: 50px;">&nbsp;&nbsp;&nbsp;&nbsp;Used only when the changes being made include changes to information
              that describes the characteristics and structure of the NMGs and domains.</p>
              <h3 style="margin-left: 30px;">VIEW</h3>
-        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Not needed, has been left in only for migration purposes.<br><br>
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Not needed, has been left in only for migration purposes.<br><br>
             The GMFHS CONFIG command also has a LOAD parameter. If the default
 LOAD=NO is specified with CONFIG VIEW, no operation is performed. For
 CONFIG DOMAIN and NETWORK, if the default LOAD=NO is specified, all
@@ -212,7 +213,7 @@ amount used when GMFHS was initially started.<br>
 command.
         </p>
       <h3 style="margin-right: 20px;">Selecting the Required GMFHS CONFIG Command</h3>
-        <p style="margin-left: 30px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The following tables show which GMFHS CONFIG command is required when<br>
+        <p style="margin-left: 30px;" >&nbsp;&nbsp;&nbsp;&nbsp;The following tables show which GMFHS CONFIG command is required when<br>
 objects in the RODM cache have their field values changed. To determine what
 CONFIG command must be used, use the first of the following rules that applies:
         <li style="margin-left: 30px;">If any object field change being made requires a CONFIG NETWORK command,
@@ -231,9 +232,9 @@ and deletion of object links is done by changing field values for fields with da
 type OBJECTLINK or OBJECTLINKLIST. Changes to fields of these types are
             covered by the tables.</p>
         <h3>Non_SNA_Domain_Class Changes</h3>
-        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 3 shows which GMFHS CONFIG command to use when changing a field of
+        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 3 shows which GMFHS CONFIG command to use when changing a field of
 an object in the Non_SNA_Domain_Class.</p>
-        <p style="font-style: italic; margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 3. GMFHS CONFIG Command for Non_SNA_Domain_Class Objects</p>
+        <p style="font-style: italic; margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 3. GMFHS CONFIG Command for Non_SNA_Domain_Class Objects</p>
 
 
         <style>table thead th { border-bottom: 1px solid #000; }
@@ -304,7 +305,7 @@ an object in the Non_SNA_Domain_Class.</p>
   </tbody>
 
         </table>
-<p style="margin-right: 30px;"><b>Note:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ContainsResource field of Non_SNA_Domain_Class objects can specify either
+<p style="margin-right: 30px;"><b>Note:</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The ContainsResource field of Non_SNA_Domain_Class objects can specify either
 GMFHS-managed real resources or GMFHS-NMG objects that belong to the domain. If the
 Resources field of the non-SNA Domain object is linked to the Domain field of a
 GMFHS-NMG object, use the CONFIG NETWORK command. If only GMFHS-managed real resources are being linked to or unlinked from non-SNA domain objects, the CONFIG
@@ -312,10 +313,10 @@ DOMAIN command can be used. See the NetView online help for a complete descripti
 the CONFIG DOMAIN command before you use it.</p>
         
         <h3  style="margin-right: 30px;">SNA_Domain_Class Changes</h3>
-        <p style="margin-right: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 4 shows which GMFHS CONFIG command to use when changing a field of
+        <p style="margin-right: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 4 shows which GMFHS CONFIG command to use when changing a field of
 an object in the SNA_Domain_Class. Issue the GMFHS CONFIG NETWORK
 command when you create or delete an object of the SNA_Domain_Class</p>
-        <p style="margin-right: 30px; font-style: italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 4. GMFHS CONFIG Command for SNA_Domain_Class Objects</p>
+        <p style="margin-right: 30px; font-style: italic">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 4. GMFHS CONFIG Command for SNA_Domain_Class Objects</p>
         
         
         <style>table thead th { border-bottom: 1px solid #000; }
@@ -394,9 +395,9 @@ an object in the NMG_Class</p>
       </tr>
     </tbody></table>
         <h3 style="margin-right: 30px;">GMFHS_Managed_Real_Objects_Class Changes</h3>
-        <p style="margin-right: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 6 shows which GMFHS CONFIG command to use when changing a field of
+        <p style="margin-right: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 6 shows which GMFHS CONFIG command to use when changing a field of
 an object in the GMFHS_Managed_Real_Objects_Class</p>
-        <p style="margin-right: 30px; font-style: italic;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 6. GMFHS CONFIG Command for GMFHS_Managed_Real_Objects_Class Objects</p>
+        <p style="margin-right: 30px; font-style: italic;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Table 6. GMFHS CONFIG Command for GMFHS_Managed_Real_Objects_Class Objects</p>
         
         
         <style>table thead th { border-bottom: 1px solid #000; width: auto;}
@@ -420,12 +421,12 @@ an object in the GMFHS_Managed_Real_Objects_Class</p>
           <td style="border-bottom: 1px solid #000;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;DOMAIN (see note)</td>
       </tr>
     </tbody></table>
-        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> If only GMFHS-managed real resources are being linked to or unlinked from
+        <p  style="margin-left: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> If only GMFHS-managed real resources are being linked to or unlinked from
 non-SNA domain objects, the CONFIG DOMAIN command can be used. See the NetView
 online help for a complete description of the CONFIG DOMAIN command before you use
 it.</p>
         <h3 style="margin-left: 50px;">Adding NMGs and Domains When GMFHS Is Active</h3>
-        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NMGs and non-SNA domains can be added to RODM while GMFHS is running
+        <p  style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NMGs and non-SNA domains can be added to RODM while GMFHS is running
 without using the GMFHS CONFIG command. Use the following guidelines when
 defining the objects in RODM.</p>
         <li style="margin-left: 30px;">Set the appropriate bit to indicate that you want to dynamically add an NMG or
@@ -433,7 +434,7 @@ non-SNA domain.</li>
         <li style="margin-left: 30px;">Set the appropriate bit in the DomainCharacteristics field to indicate that you do
 not want GMFHS to apply initial or unknown status to resources under a
 non-SNA domain.</li>
-        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> This only applies when GMFHS initially processes the NMG or non-SNA
+        <p style="margin-left: 30px;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Note:</b> This only applies when GMFHS initially processes the NMG or non-SNA
 domain. GMFHS applies initial and unknown status normally for all subsequent
 processing.</p>
         <li style="margin-left: 30px;">If you do not want GMFHS to solicit resource status for a non-SNA domain, set
